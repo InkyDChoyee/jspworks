@@ -1,0 +1,11 @@
+package bean;
+
+import java.io.Serializable;
+
+public class LoginBean implements Serializable{
+
+	private static final long serialVersionUID = 2L;
+
+	private String uid;
+	private String passwd;
+}
