@@ -14,7 +14,10 @@
 	<div id="container">
 		<h2>주소 목록</h2>
 		<hr>
-		<p><a href="addrForm.jsp">주소추가</a></p>
+		<p>
+			<a href="addrForm.jsp">[주소추가]</a> &nbsp;&nbsp;
+			(<%=session.getAttribute("sessionId") %>님)<a href="logout.jsp"> [로그아웃]</a>
+		</p>
 		<table id="tbl_list">
 			<thead>
 				<tr>
@@ -51,6 +54,7 @@
 				%>
 			</tbody>
 		</table>
+<!-- 		<p><a href="index.jsp">[메인으로]</a></p> -->
 	</div>
 </body>
 </html>

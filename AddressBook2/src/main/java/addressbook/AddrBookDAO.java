@@ -50,7 +50,7 @@ public class AddrBookDAO {
 		
 		// sql 처리
 		try {
-			String sql = "SELECT * FROM addrbook";
+			String sql = "SELECT * FROM addrbook ORDER BY bnum";
 			pstmt = conn.prepareStatement(sql);
 			// db의 주소록을 꺼내옴
 			rs = pstmt.executeQuery();

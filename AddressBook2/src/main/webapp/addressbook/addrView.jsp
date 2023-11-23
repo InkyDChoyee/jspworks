@@ -46,14 +46,17 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="addrUpdate.jsp?bnum=<%= addrBook.getBnum() %>">
-						<button type="button">수정</button>	
-					</a>
-					<a onclick="return confirm('정말로 해당 주소를 삭제하시겠습니까?')"
-						href="addrDelete.jsp?bnum=<%= addrBook.getBnum() %>">
-						<button type="button">삭제</button>
-					</a>
-				
+					<% 
+						String sessionId = (String)session.getAttribute("sessionId");
+						if(sessionId.equals(addrBook.getEmail())) {%>
+						<a href="addrUpdate.jsp?bnum=<%= addrBook.getBnum() %>">
+							<button type="button">수정</button>	
+						</a>
+						<a onclick="return confirm('정말로 해당 주소를 삭제하시겠습니까?')"
+							href="addrDelete.jsp?bnum=<%= addrBook.getBnum() %>">
+							<button type="button">삭제</button>
+						</a>
+					<% } %>
 					<a href="addrList.jsp">
 						<button type="button">목록</button>
 					</a>

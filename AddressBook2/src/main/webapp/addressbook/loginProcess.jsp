@@ -11,7 +11,7 @@
 		response.sendRedirect("addrList.jsp");  //주소록 목록으로 이동
 	} else {
 		out.println("<script>");
-		out.println("<alert('아이디나 비밀번호가 일치하지 않습니다')>");
+		out.println("alert('아이디나 비밀번호가 일치하지 않습니다')");
 		out.println("history.go(-1)");  // 이전 페이지 이동
 		out.println("</script>");
 	}
