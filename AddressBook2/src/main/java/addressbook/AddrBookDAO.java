@@ -74,7 +74,7 @@ public class AddrBookDAO {
 		
 		// db 종료
 		finally {
-			JDBCUtil.close(conn, pstmt);
+			JDBCUtil.close(conn, pstmt, rs);
 		}
 		return addrList;
 	}
@@ -102,10 +102,34 @@ public class AddrBookDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCUtil.close(conn, pstmt);
+			JDBCUtil.close(conn, pstmt, rs);
 		}
 		return addrBook;
 		
+	}
+	
+	// 로그인 체크
+	public boolean checkLogin(String email) {
+		
+		// db연결
+		conn = JDBCUtil.getConnection();
+		
+		try {
+			// sql 처리
+			String sql = "SELECT email FROM addrbook "
+					+ "WHERE email = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) { // 검색한 이메일이 있으면 true
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return false;
 	}
 	
 }

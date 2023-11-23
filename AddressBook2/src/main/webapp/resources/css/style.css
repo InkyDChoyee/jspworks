@@ -98,3 +98,24 @@ a {text-decoration: none; color: #222;}
 #tbl_view tr .sub {
 	background: #eee;
 }
+
+
+/* 로그인 스타일 */
+#tbl_login {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#tbl_login, td {
+	border: 1px solid #ccc;
+	border-collapse: collapse;	
+	text-align: center;
+}
+
+#tbl_login td {
+	padding: 10px;
+}
+	
+#tbl_login tr .sub {
+	background: #eee;
+}
