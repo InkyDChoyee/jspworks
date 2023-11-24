@@ -12,6 +12,9 @@
 	<%
 		// addAddrBook()함수 호출 사용
 		abDAO.addAddrBook(addrBook);
+	
+		// 이름으로 세션을 발급함 - 세션 이름(sessionName)
+		session.setAttribute("sessionName", addrBook.getUsername());
 	%>
 	
 	<div id="container">

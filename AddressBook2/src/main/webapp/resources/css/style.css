@@ -59,6 +59,10 @@ a {text-decoration: none; color: #222;}
 
 
 /* 목록 스타일 */
+#container .accent {
+	color: #44f;
+}
+
 #tbl_list {
 	width: 800px;
 	margin: 0 auto;
@@ -99,6 +103,10 @@ a {text-decoration: none; color: #222;}
 	background: #eee;
 }
 
+#tbl_view tr input[type="text"] {
+	width: 200px;
+	height: 20px;
+}
 
 /* 로그인 스타일 */
 #tbl_login {
@@ -119,3 +127,4 @@ a {text-decoration: none; color: #222;}
 #tbl_login tr .sub {
 	background: #eee;
 }
+

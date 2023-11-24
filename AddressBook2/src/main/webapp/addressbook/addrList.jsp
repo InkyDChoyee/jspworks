@@ -31,7 +31,8 @@
 		<hr>
 		<p>
 			<!-- <a href="addrForm.jsp">[주소추가]</a> &nbsp;&nbsp; -->
-			<%-- (<%=session.getAttribute("sessionId") %>님) --%><a href="logout.jsp"> [로그아웃]</a>
+			<%-- (<%=session.getAttribute("sessionId") %>님) --%>
+			(<span class="accent"><%=session.getAttribute("sessionName") %></span> 님)<a href="logout.jsp"> [로그아웃]</a>
 		</p>
 		<table id="tbl_list">
 			<thead>

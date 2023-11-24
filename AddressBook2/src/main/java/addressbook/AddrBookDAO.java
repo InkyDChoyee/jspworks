@@ -150,4 +150,32 @@ public class AddrBookDAO {
 			JDBCUtil.close(conn, pstmt);
 		}
 	}
+	
+	// 주소 수정
+	public void updateAddrBook(AddrBook addrBook) {
+		// db 연결
+		conn = JDBCUtil.getConnection();
+	
+		try {
+			// sql 처리
+			String sql = ("UPDATE addrbook SET username = ?, tel = ?, email = ?, gender = ? " 
+					+ "WHERE bnum = ?");
+			pstmt = conn.prepareStatement(sql);
+			// 폼에 입력된 자료를 가져와서 DB에 저장
+			pstmt.setString(1, addrBook.getUsername());
+			pstmt.setString(2, addrBook.getTel());
+			pstmt.setString(3, addrBook.getEmail());
+			pstmt.setString(4, addrBook.getGender());
+			pstmt.setInt(5, addrBook.getBnum());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	
+	
 }
