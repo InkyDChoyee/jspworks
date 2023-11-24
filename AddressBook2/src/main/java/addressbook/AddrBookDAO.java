@@ -132,4 +132,22 @@ public class AddrBookDAO {
 		return false;
 	}
 	
+	// 주소 삭제
+	public void deleteAddrBook(int bnum) {
+		// db 연결
+		conn = JDBCUtil.getConnection();
+		
+		try {
+			// sql 처리
+			String sql = "DELETE FROM addrbook WHERE bnum = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);   // 외부에서 받은 번호를 입력함
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { // db 종료
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 }
