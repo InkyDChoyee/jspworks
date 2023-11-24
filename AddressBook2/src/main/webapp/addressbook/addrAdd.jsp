@@ -13,7 +13,7 @@
 		// addAddrBook()함수 호출 사용
 		abDAO.addAddrBook(addrBook);
 	
-		// 이름으로 세션을 발급함 - 세션 이름
+		// 자동 로그인 코드
 		session.setAttribute("sessionId", addrBook.getEmail());
 	%>
 	
