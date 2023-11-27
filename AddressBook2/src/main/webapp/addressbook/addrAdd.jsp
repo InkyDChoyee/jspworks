@@ -15,6 +15,7 @@
 	
 		// 자동 로그인 코드
 		session.setAttribute("sessionId", addrBook.getEmail());
+		session.setAttribute("sessionName", addrBook.getUsername());
 	%>
 	
 	<div id="container">
