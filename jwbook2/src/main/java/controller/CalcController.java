@@ -49,6 +49,7 @@ public class CalcController extends HttpServlet {
 		 */
 		
 		// 계산 결과 - 모델(Model)
+		// 첫번 째 문자열이 view 페이지(result페이지)로 매핑됨
 		request.setAttribute("result", result);
 		// 결과를 받아줄 페이지
 		RequestDispatcher dispathcer = 
