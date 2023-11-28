@@ -23,7 +23,7 @@
 				</li>
 				<li>
 					<label>생일</label>
-					<input type="date" name="birth">
+					<input type="date" name="birth" class="birth">
 				</li>
 				<li>
 					<label>이메일</label>
