@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>학생 목록</title>
+<link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
 	<section id="content">

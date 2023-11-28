@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* 공통 */
+#content{width:80%; margin: 30px auto; text-align: center;}
+
+/* list 스타일 */
+table, th, td {border: 1px solid #ccc; 
+				padding: 10px; 
+				border-collapse:collapse;
+				text-align: center;
+				margin: 0 auto;
+}

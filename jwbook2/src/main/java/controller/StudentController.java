@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/")   // '/'루트 경로 아래에 새로운 경로가 추가 됨
+@WebServlet("*.do")   // '/'루트 경로 아래에 do로 끝나는 확장자인 파일은 모두 올 수 있음
 public class StudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,16 +24,17 @@ public class StudentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 경로(uri) 설정 - 커맨드패턴(command)
 		// http:localhost:8000/student/studentlist.jsp
-		// 맨 뒤 경로 추출 - lastIndexOf('/'), subString(1)
+		// 맨 뒤 경로 추출 - lastIndexOf('/'), subString(0)
 		String uri = request.getRequestURI();
 		String command = uri.substring(uri.lastIndexOf("/"));
+		System.out.println(uri);
 		System.out.println(uri.lastIndexOf("/"));
 		System.out.println(command);
 		
 		// 이동할 페이지
 		String nextPage = "";
 		
-		if(command.equals("/studentlist")) {
+		if(command.equals("/studentlist.do")) {
 			nextPage = "/student/studentlist.jsp";
 		}
 			
