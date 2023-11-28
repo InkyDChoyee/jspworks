@@ -12,7 +12,7 @@
 		let score = form.score.value;
 		
 		// 값이 비었을 때(입력되지 않았을 때), 숫자가 아닌 문자가 입력되었을 때
-		if(score == ""){
+		if(score == "" || isNaN(score)){
 			alert("숫자를 입력해주세요");
 			score.focus();
 			return false;
