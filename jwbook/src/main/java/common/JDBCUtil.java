@@ -9,8 +9,8 @@ import java.sql.SQLException;
 // DB에 연결하고 종료하는 클래스
 public class JDBCUtil {
 	
-	static String driverClass = "oracle.jdbc.OracleDriver";
-	static String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	static String driverClass = "com.mysql.cj.jdbc.Driver";
+	static String url = "jdbc:mysql://127.0.0.1:3306/jwebdb?serverTime=Asia/Seoul";
 	static String user = "jweb";
 	static String password = "pwjweb";
 	
