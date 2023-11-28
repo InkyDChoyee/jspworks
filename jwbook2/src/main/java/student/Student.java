@@ -7,6 +7,7 @@ public class Student implements Serializable{
 
 	private static final long serialVersionUID = 100L;
 	
+	// 필드
 	private int sid;          // 자동 순번
 	private String username;  // 학생 이름
 	private String univ;      // 대학
