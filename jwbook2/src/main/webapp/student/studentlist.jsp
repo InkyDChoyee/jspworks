@@ -11,6 +11,8 @@
 <body>
 	<section id="content">
 		<h2>학생 목록</h2>
+		<hr>
+		<p><a href="/studentform.do">[학생 추가]</a></p>
 		<table>
 			<tr>
 				<th>번호</th>

@@ -40,4 +40,29 @@ public class StudentDAO {
 		}
 		return students;
 	}
+	
+	// 학생 추가 등록
+	public void insertStudent(Student s) {
+		conn = JDBCUtil.getConnection();
+		try {
+			// sql 처리
+			String sql = "INSERT INTO student (sid, username, univ, birth, email) "
+					+ "VALUES (seq_sid.NEXTVAL, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s.getUsername());
+			pstmt.setString(2, s.getUniv());
+			pstmt.setString(3, s.getBirth());
+			pstmt.setString(4, s.getEmail());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+		
+	}
+	
+	
 }

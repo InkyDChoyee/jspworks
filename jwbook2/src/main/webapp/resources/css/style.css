@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* 공통 */
 #content{width:80%; margin: 30px auto; text-align: center;}
+ul li {list-style: none; margin: 10px;}
 
 /* list 스타일 */
 table, th, td {border: 1px solid #ccc; 

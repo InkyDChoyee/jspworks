@@ -47,6 +47,8 @@ public class StudentController extends HttpServlet {
 			request.setAttribute("students", students);
 			// 뷰 페이지로 이동
 			nextPage = "/student/studentlist.jsp";
+		} else if(command.equals("/studentform.do")) {
+			nextPage = "/student/studentform.jsp";
 		}
 			
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
