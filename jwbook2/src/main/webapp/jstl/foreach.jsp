@@ -12,5 +12,24 @@
 		<c:forEach var="i" begin="1" end="9">
 			${dan} × ${i} = ${dan*i} <br>
 		</c:forEach>
+	<br>	
+	<h3> 전체 구구단</h3>
+	<c:forEach var="i" begin="2" end="9">
+		<c:forEach var="j" begin="1" end="9">
+			${i} × ${i} = ${i*j} <br>
+		</c:forEach>
+		<br>
+	</c:forEach>
+	
+	<h3> 전체 구구단</h3>
+	<table>
+		<c:forEach var="i" begin="1" end="9">
+		<tr>
+			<c:forEach var="j" begin="2" end="9">
+				<td width="100px">${j} × ${i} = ${i*j}</td>
+			</c:forEach>
+		</tr>
+		</c:forEach>
+	</table>		
 </body>
 </html>
