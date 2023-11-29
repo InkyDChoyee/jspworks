@@ -47,6 +47,9 @@ public class MainController extends HttpServlet {
 			
 			// 이동할 페이지
 			nextPage = "/member/memberlist.jsp";
+		}else if(command.equals("/joinform.do")) {
+			// get 방식
+			nextPage = "/member/joinform.jsp";
 		}
 		
 		

@@ -19,7 +19,7 @@ header nav {width: 70%; float: right;}
 /* main 스타일 */
 #main {margin: 0 auto; text-align: center;}
 #main .main_img {margin: 20px; }
-#main .main_img img {border-radius: 5px; width: 300px; height: 400px;}
+#main .main_img img {border-radius: 5px; width: 400px; height: 500px;}
 
 /* 하단메뉴 - footer 스타일 */
 footer {height: 80px; border-top: 2px solid #222;}
@@ -40,3 +40,10 @@ footer {height: 80px; border-top: 2px solid #222;}
 						   text-align: center;}
 table th, td {padding: 10px;}
 table thead {background: #eee;}
+
+/* 회원 가입 스타일 */
+#join {width: 700px; margin: 20px auto;}
+#join form {margin: 20px auto;}
+#join form ul li {margin: 20px}
+form fieldset {margin-bottom: 16px;}
+form button {padding: 5px;}
