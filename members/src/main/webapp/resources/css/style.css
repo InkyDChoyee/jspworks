@@ -47,3 +47,5 @@ table thead {background: #eee;}
 #join form ul li {margin: 20px}
 form fieldset {margin-bottom: 16px;}
 form button {padding: 5px;}
+form label {width: 120px; float: left; padding-left: 20px;}
+form input {padding: 5px;}
