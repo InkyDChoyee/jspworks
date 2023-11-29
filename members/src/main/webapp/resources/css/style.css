@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 공통 스타일 */
 * {margin: 0; padding: 0;}
-#container {width: 90%; margin: 30px auto;}
+#container {width: 90%; margin: 30px auto 100px;}
 ul li {list-style: none;}
 a {text-decoration: none;}
 
@@ -18,6 +18,8 @@ header nav {width: 70%; float: right;}
 
 /* main 스타일 */
 #main {margin: 0 auto; text-align: center;}
+#main .main_img {margin: 20px; }
+#main .main_img img {border-radius: 5px; width: 300px; height: 400px;}
 
 /* 하단메뉴 - footer 스타일 */
 footer {height: 80px; border-top: 2px solid #222;}
@@ -29,3 +31,12 @@ footer {height: 80px; border-top: 2px solid #222;}
 				}
 #bottomMenu li a {color: #444;}
 #bottomMenu li:last-child{border: none;}
+
+/* 회원 목록 스타일 */
+#memberlist {width: 700px; margin: 20px auto;}
+#memberlist table {width: 700px; margin: 20px auto;}
+#memberlist table, th, td {border: 1px solid #ccc; 
+						   border-collapse: collapse;
+						   text-align: center;}
+table th, td {padding: 10px;}
+table thead {background: #eee;}
