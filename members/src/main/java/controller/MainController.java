@@ -50,6 +50,24 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/joinform.do")) {
 			// get 방식
 			nextPage = "/member/joinform.jsp";
+		}else if(command.equals("/insertmember.do")) {
+			// 빈 회원 객체 생성 -> 데이터를 받아서 셋팅
+			// 폼 데이터 받기
+			String id = request.getParameter("id");
+			String passwd = request.getParameter("passwd");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String gender = request.getParameter("gender");
+			// 객체에 데이터 셋팅
+			Member m = new Member();
+			m.setId(id);
+			m.setPasswd(passwd);
+			m.setName(name);
+			m.setEmail(email);
+			m.setGender(gender);
+			mDAO.insertmember(m);
+			// 회원가입 후 이동
+			nextPage = "/index.jsp";
 		}
 		
 		

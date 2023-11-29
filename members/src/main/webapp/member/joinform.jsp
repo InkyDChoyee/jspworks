@@ -29,10 +29,15 @@
 							<input type="password" id="passwd2" name="passwd2" required>
 						</li>	
 							<li>
+							<label for="name">이름</label>
+							<input type="text" id="name" name="name">
+						</li>
+							</li>	
+							<li>
 							<label for="email">이메일</label>
 							<input type="email" id="email" name="email">
-						</li>	
-							<li>
+						</li>		
+						<li>
 							<label for="gender">성별</label>
 							<input type="radio" id="gender" name="gender" value="남" checked>남
 							<input type="radio" id="gender" name="gender" value="여">여

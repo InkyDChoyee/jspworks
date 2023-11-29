@@ -49,4 +49,29 @@ public class MemberDAO {
 		// db 종료
 		return memberList;
 	}
+	
+	// 회원 가입
+	public void insertmember(Member m) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "INSERT INTO member(mno, id, passwd, name, email, gender) "
+					+ "VALUES(seq_mno.NEXTVAL, ?, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			// 폼에 입력 된 데이터를 가져와서 db에 저장
+			pstmt.setString(1, m.getId());
+			pstmt.setString(2, m.getPasswd());
+			pstmt.setString(3, m.getName());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getGender());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+		
+	}
+	
+	
 }

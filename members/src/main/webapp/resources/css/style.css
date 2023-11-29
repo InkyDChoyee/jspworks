@@ -42,7 +42,7 @@ table th, td {padding: 10px;}
 table thead {background: #eee;}
 
 /* 회원 가입 스타일 */
-#join {width: 700px; margin: 20px auto;}
+#join {width: 500px; margin: 20px auto;}
 #join form {margin: 20px auto;}
 #join form ul li {margin: 20px}
 form fieldset {margin-bottom: 16px;}
