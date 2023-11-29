@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/* 공통 스타일 */
+* {margin: 0; padding: 0;}
+#container {width: 90%; margin: 30px auto;}
+ul li {list-style: none;}
+a {text-decoration: none;}
+
+/* 상단메뉴 - header 스타일 */
+header {height: 80px; background: #99f;}
+header #logo {width: 20%; float: left; line-height: 80px;}
+#logo h1 a {color: #df9; padding-left: 24px; font-style: italic;}
+#logo h1 a:hover {color: #eee;}
+header nav {width: 70%; float: right;}
+#topMenu {line-height: 80px;}
+#topMenu li {float: left; margin: 0 20px;}
+#topMenu li a {color: #fee; padding: 0 20px;}
+#topMenu li a:hover {color: #444;}
+
+/* main 스타일 */
+#main {margin: 0 auto; text-align: center;}
+
+/* 하단메뉴 - footer 스타일 */
+footer {height: 80px; border-top: 2px solid #222;}
+#bottomMenu {margin: 10px 20px;}
+#bottomMenu li {float: left; 
+				margin: 10px 0;
+				padding: 0 10px; 
+				border-right: 1.5px solid #aaa;
+				}
+#bottomMenu li a {color: #444;}
+#bottomMenu li:last-child{border: none;}

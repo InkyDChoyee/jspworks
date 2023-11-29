@@ -8,7 +8,9 @@
 </head>
 <body>
 	<div id="container">
-		<a href="/memberlist.do">회원 목록 이동</a>
+		<script>
+			location.href = "main.jsp";
+		</script>
 	
 	</div>
 </body>
