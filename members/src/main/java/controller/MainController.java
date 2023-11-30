@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.Member;
 import member.MemberDAO;
@@ -36,8 +37,10 @@ public class MainController extends HttpServlet {
 		System.out.println(uri);
 		String command = uri.substring(uri.lastIndexOf('/'));
 		System.out.println(command);
-		
+		// 이동 페이지
 		String nextPage = "";
+		// 세션 객체 생성
+		HttpSession session = request.getSession();
 		
 		if(command.equals("/memberlist.do")) {
 			// 회원정보를 db에서 가져옴
@@ -76,7 +79,27 @@ public class MainController extends HttpServlet {
 			// 데이터 보내기 - 모델 생성 
 			request.setAttribute("member", member);
 			nextPage = "/member/memberview.jsp";
+		}else if(command.equals("/loginform.do")) {  // 로그인 폼 페이지로 이동
+			nextPage = "/member/loginform.jsp";
+		}else if(command.equals("/login.do")) { // 로그인 처리
+			// 아이디, 비번 파라미터 받기
+			String id = request.getParameter("id");
+			String passwd = request.getParameter("passwd");
+			// 빈 객체 생성 -> 아이디 비번 셋팅
+			Member m = new Member();
+			m.setId(id);
+			m.setPasswd(passwd);
+			// 로그인 인증
+			boolean result = mDAO.checkLogin(m);
+			if(result) {   // 결과가 true 이면 session 발급
+				session.setAttribute("sessionId", id);
+				// 로그인 후 페이지 이동
+				nextPage = "/member/index.jsp";
+			}else {   // 결과가 false일때 오류 처리
+				// 에러 알림창 띄움
+			}
 		}
+		
 		
 		// dispatcher가 forward로 보내줌
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

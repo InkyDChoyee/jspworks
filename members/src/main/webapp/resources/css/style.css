@@ -53,7 +53,7 @@ form input {padding: 5px;}
 /* 회원 정보 스타일 */
 #memberview {width: 450px; margin: 20px auto;}
 #memberview table {width: 450px; margin: 20px auto;}
-#memberview table, th, td {border: 1px solid #ccc; 
+#memberview table, td {border: 1px solid #ccc; 
 						   border-collapse: collapse;
 						   text-align: center;}
-table th, td {padding: 10px;}
+table td {padding: 10px;}

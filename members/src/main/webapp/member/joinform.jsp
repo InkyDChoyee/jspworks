@@ -28,12 +28,11 @@
 							<label for="passwd2">비밀번호 확인</label>
 							<input type="password" id="passwd2" name="passwd2" required>
 						</li>	
-							<li>
+						<li>
 							<label for="name">이름</label>
 							<input type="text" id="name" name="name">
 						</li>
-							</li>	
-							<li>
+						<li>
 							<label for="email">이메일</label>
 							<input type="email" id="email" name="email">
 						</li>		
