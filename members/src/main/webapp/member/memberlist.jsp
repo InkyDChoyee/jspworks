@@ -14,6 +14,9 @@
 	<div id="container">
 		<section id="memberlist">
 			<h2>회원 목록</h2>
+			<div class="logout">
+				<p><a href="/logout.do">[관리자 로그아웃]</a></p>
+			</div>
 			<table>
 				<thead>
 					<tr>

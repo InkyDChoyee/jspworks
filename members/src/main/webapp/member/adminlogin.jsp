@@ -13,20 +13,27 @@
 	<div id="container">
 		<section id="login">
 			<h2>로그인</h2>
-			<form action="/login.do" method="post">
+			<form action="/j_security_check" method="post">
 				<fieldset>
 					<ul>
 						<li>
 							<label for="id">아이디</label>
-							<input type="text" id="id" name="id" required>
+							<input type="text" id="id" name="j_username" required>
 						</li>
 						<li>
 							<label for="passwd">비밀번호</label>
-							<input type="password" id="passwd" name="passwd" required>
+							<input type="password" id="passwd" name="j_password" required>
 						</li>		
 					</ul>
 				</fieldset>
-				<div class="error">${error}</div>
+				<% 
+					String error = request.getParameter("error");
+					if(error != null){
+						out.println("<div class='error'>");
+						out.println("관리자 전용 메뉴입니다<br>회원 로그인 페이지를 이용해주세요");
+						out.println("</div>");
+					}
+				%>
 				<div class="button">
 					<button type="submit">로그인</button>
 				</div>

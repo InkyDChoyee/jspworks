@@ -24,8 +24,8 @@
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/member/adminLogin.jsp</form-login-page>
-			<form-error-page>/member/loginFailed.jsp</form-error-page>
+			<form-login-page>/member/adminlogin.jsp</form-login-page>
+			<form-error-page>/member/loginfailed.jsp</form-error-page>
 		</form-login-config>
 	</login-config>
 </web-app>
