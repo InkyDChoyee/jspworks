@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,6 +31,8 @@ public class MainController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 한글 인코딩
 		request.setCharacterEncoding("utf-8");
+		// 응답할 컨텐츠 유형
+		response.setContentType("text/html; charset=utf-8");
 		
 		// 경로 설정
 		// uri - 컨텍스트 + 파일 경로
@@ -41,6 +44,8 @@ public class MainController extends HttpServlet {
 		String nextPage = "";
 		// 세션 객체 생성
 		HttpSession session = request.getSession();
+		// view에 출력할 출력 객체 생성
+		PrintWriter out = response.getWriter();
 		
 		if(command.equals("/memberlist.do")) {
 			// 회원정보를 db에서 가져옴
@@ -91,15 +96,21 @@ public class MainController extends HttpServlet {
 			m.setPasswd(passwd);
 			// 로그인 인증
 			boolean result = mDAO.checkLogin(m);
-			if(result) {   // 결과가 true 이면 session 발급
+			if(result == true) {   // 결과가 true 이면 session 발급
 				session.setAttribute("sessionId", id);
 				// 로그인 후 페이지 이동
-				nextPage = "/member/index.jsp";
-			}else {   // 결과가 false일때 오류 처리
+				nextPage = "/index.jsp";
+			}else if(result == false) {   // 결과가 false일때 오류 처리
 				// 에러 알림창 띄움
+//				out.println("<script>");
+//				out.println("alert('아이디나 비밀번호를 확인해주세요);");
+//				out.println("history.back();");
+//				out.println("</script>");
 			}
+		}else if(command.equals("/logout.do")) {
+			session.invalidate();   // 모든 세션 삭제
+			nextPage = "/index.jsp";
 		}
-		
 		
 		// dispatcher가 forward로 보내줌
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
