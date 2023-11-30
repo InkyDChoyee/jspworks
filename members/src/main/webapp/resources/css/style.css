@@ -59,10 +59,10 @@ form input {padding: 5px;}
 table th, td {padding: 10px;}
 
 /* 로그인 스타일 */
-#login {width: 500px; margin: 20px auto;}
-#login form {margin: 20px auto;}
-#login form ul li {margin: 20px}
-form fieldset {margin-bottom: 16px;}
-form button {padding: 5px;}
+#login {width: 400px; margin: 30px auto 100px;}
+#login form {margin: 30px auto;}
+#login form ul li {margin: 30px}
+form button {width: 100%; padding: 10px 0;}
 form label {width: 120px; float: left; padding-left: 20px;}
 form input {padding: 5px;}
+#login .error{color: #b00; margin-top: 16px; font-size: 0.9rem;}

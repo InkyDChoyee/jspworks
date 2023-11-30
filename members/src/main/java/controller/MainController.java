@@ -106,6 +106,10 @@ public class MainController extends HttpServlet {
 //				out.println("alert('아이디나 비밀번호를 확인해주세요);");
 //				out.println("history.back();");
 //				out.println("</script>");
+				String error = "아이디나 비밀번호를 다시 확인해주세요";
+				request.setAttribute("error", error);
+				// 에러 발생 후 페이지 이동
+				nextPage = "/member/loginform.jsp";
 			}
 		}else if(command.equals("/logout.do")) {
 			session.invalidate();   // 모든 세션 삭제

@@ -26,6 +26,7 @@
 						</li>		
 					</ul>
 				</fieldset>
+				<div class="error">${error}</div>
 				<div class="button">
 					<button type="submit">로그인</button>
 				</div>
