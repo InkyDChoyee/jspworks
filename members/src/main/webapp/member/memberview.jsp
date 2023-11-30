@@ -38,10 +38,13 @@
 						<td>${member.gender}</td>
 					</tr>
 					<tr>
-						<td colspan="2"><fmt:formatDate value ="${member.joinDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
+						<td><label for="joindate">가입일</label></td>
+						<td ><fmt:formatDate value ="${member.joinDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
 					</tr>
 					<tr>
-						<td>
+						<td colspan="2">
+							<a href="#"><button>수정</button></a>
+							<a href="#"><button>탈퇴</button></a>
 							<a href="/memberlist.do"><button>목록</button></a>
 						</td>
 					</tr>
