@@ -46,4 +46,29 @@ public class BoardDAO {
 		// db 종료
 		return boardList;
 	}
+	
+	// 글쓰기 처리
+	public void write(Board b) {
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리
+			String sql = "INSERT INTO board (bno, title, content, id) "
+					+ "VALUES (seq_bno.NEXTVAL, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getTitle());
+			pstmt.setString(2, b.getContent());
+			pstmt.setString(3, b.getId());
+			// sql 실행
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	
+	
 }

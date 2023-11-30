@@ -76,4 +76,16 @@ form input {padding: 5px;}
 						   text-align: center;}
 table th, td {padding: 10px;}
 table thead {background: #eee;}
+#boardlist button {padding: 10px;}
 
+/* 글작성 스타일 */
+#writeform {width: 600px; margin: 20px auto;}
+#writeform table {width: 600px; margin: 20px auto;}
+#writeform table, th, td {border: 1px solid #ccc; 
+						   border-collapse: collapse;
+						   text-align: center;}
+#writeform input {width: 600px; height: 25px; padding: 5px;}
+#writeform textarea{width: 600px; resize: none; overflow-y: scroll auto ;}
+table th, td {padding: 10px;}
+table thead {background: #eee;}
+#writeform button {width: 50%; padding: 10px; float: left;}

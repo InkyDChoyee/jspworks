@@ -38,6 +38,10 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<!-- 글쓰기 버튼 -->
+			<div>
+				<a href="/writeform.do"><button type="button">글쓰기</button></a>
+			</div>
 		</section>
 	</div>
 	<jsp:include page="../footer.jsp"/>

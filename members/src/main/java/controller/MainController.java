@@ -131,11 +131,34 @@ public class MainController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 			// boardlist.jsp 에서 "boardList"를 받음
 			nextPage = "/board/boardlist.jsp";
+		}else if (command.equals("/writeform.do")) {
+			nextPage = "/board/writeform.jsp";
+		}else if (command.equals("/write.do")) {
+			// 폼 데이터 닫기
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			// 세션 가져오기(id)
+			String id = (String)session.getAttribute("sessionId");
+			// db에 저장
+			Board b = new Board();
+			b.setTitle(title);
+			b.setContent(content);
+			b.setId(id);
+			// write()호출, 실행
+			bDAO.write(b);
+			
+			nextPage = "/board/boardlist.jsp";
 		}
 		
-		// dispatcher가 forward로 보내줌
-		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
-		dispatch.forward(request, response);
+		
+		if(command.equals("/write.do")) {
+			// 새로고침 중복 생성 문제 해결
+			response.sendRedirect("/boardlist.do");
+		}else {
+			// dispatcher가 forward로 보내줌
+			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+			dispatch.forward(request, response);
+		}
 	}
 	
 }
