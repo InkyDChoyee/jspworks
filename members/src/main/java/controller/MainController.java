@@ -12,18 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import board.Board;
+import board.BoardDAO;
 import member.Member;
 import member.MemberDAO;
 
 @WebServlet("*.do")   // '/'이하의 경로에서 do로 끝나는 확장자는 모두 허용
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 10L;
+	// 필드
 	MemberDAO mDAO;
+	BoardDAO bDAO;
        
     public MainController() { // 생성자
     	mDAO = new MemberDAO();
+    	bDAO = new BoardDAO();
     }
-
+    
+    // 메서드
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -47,6 +53,7 @@ public class MainController extends HttpServlet {
 		// view에 출력할 출력 객체 생성
 		PrintWriter out = response.getWriter();
 		
+		// 회원
 		if(command.equals("/memberlist.do")) {
 			// 회원정보를 db에서 가져옴
 			List<Member> memberList = mDAO.getMemberList();
@@ -116,8 +123,19 @@ public class MainController extends HttpServlet {
 			nextPage = "/index.jsp";
 		}
 		
+		// 게시판
+		if(command.equals("/boardlist.do")) {
+			// db에서 list를 가져옴
+			List<Board> boardList = bDAO.getBoardList();
+			// 모델로 생성
+			request.setAttribute("boardList", boardList);
+			// boardlist.jsp 에서 "boardList"를 받음
+			nextPage = "/board/boardlist.jsp";
+		}
+		
 		// dispatcher가 forward로 보내줌
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}
+	
 }

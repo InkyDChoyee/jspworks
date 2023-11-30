@@ -67,3 +67,13 @@ form button {width: 100%; padding: 10px 0;}
 form label {width: 120px; float: left; padding-left: 20px;}
 form input {padding: 5px;}
 #login .error{color: #b00; margin-top: 16px; font-size: 0.9rem;}
+
+/* 게시글 목록 스타일 */
+#boardlist {width: 750px; margin: 20px auto;}
+#boardlist table {width: 750px; margin: 20px auto;}
+#boardlist table, th, td {border: 1px solid #ccc; 
+						   border-collapse: collapse;
+						   text-align: center;}
+table th, td {padding: 10px;}
+table thead {background: #eee;}
+
