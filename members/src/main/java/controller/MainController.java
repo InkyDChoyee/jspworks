@@ -69,10 +69,16 @@ public class MainController extends HttpServlet {
 			// 회원가입 후 이동
 			nextPage = "/index.jsp";
 		}else if(command.equals("/memberview.do")) {
+			// memberlist에서 클릭된 id를 받아옴
+			String id = request.getParameter("id");
+			// mDAO의 getMember() 호출
+			Member member = mDAO.getMember(id);
+			// 데이터 보내기 - 모델 생성 
+			request.setAttribute("member", member);
 			nextPage = "/member/memberview.jsp";
 		}
 		
-		
+		// dispatcher가 forward로 보내줌
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}
