@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +32,13 @@
 						<tr>
 						<!-- m.mno - m.getMno()와 같음 -->
 							<td>${m.mno}</td>
-							<td>${m.id}</td>
+							<!-- id를 클릭하면 상세보기로 이동함 -->
+							<td><a href="/memberview.do?id=${m.id}">${m.id}</a></td>
 							<td>${m.passwd}</td>
 							<td>${m.name}</td>
 							<td>${m.email}</td>
 							<td>${m.gender}</td>
-							<td>${m.joinDate}</td>
+							<td><fmt:formatDate value ="${m.joinDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
 						</tr>
 					</c:forEach>
 				</tbody>

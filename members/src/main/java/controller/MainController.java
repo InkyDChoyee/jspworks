@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.Member;
 import member.MemberDAO;
 
-@WebServlet("*.do")
+@WebServlet("*.do")   // '/'이하의 경로에서 do로 끝나는 확장자는 모두 허용
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 10L;
 	MemberDAO mDAO;
@@ -68,6 +68,8 @@ public class MainController extends HttpServlet {
 			mDAO.insertmember(m);
 			// 회원가입 후 이동
 			nextPage = "/index.jsp";
+		}else if(command.equals("/memberview.do")) {
+			nextPage = "/member/memberview.jsp";
 		}
 		
 		
