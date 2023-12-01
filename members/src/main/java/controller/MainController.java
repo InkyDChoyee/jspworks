@@ -210,14 +210,18 @@ public class MainController extends HttpServlet {
 			r.setReplyer(replyer);
 			
 			rDAO.insertreply(r);
-			
+		}else if(command.equals("/deletereply.do")) {
+			// 삭제 처리 메서드 호출
 		}
+		
+		
+		
 		
 		// redirect와 forward 구부하기
 		if(command.equals("/write.do") || command.equals("/updateboard.do")) {
 			// 새로고침 중복 생성 문제 해결
 			response.sendRedirect("/boardlist.do");
-		}else if(command.equals("/insertreply.do")) {
+		}else if(command.equals("/insertreply.do") || command.equals("/deletereply.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			response.sendRedirect("/boardview.do?bno=" + bno);
 		}else {

@@ -95,9 +95,7 @@ table thead {background: #eee;}
 /* 글 상세보기 스타일 */
 #board_view {width: 600px; margin: 20px auto;}
 #board_view table {width: 600px; margin: 20px auto;}
-#board_view table, th, td {border: 1px solid #ccc; 
-						   border-collapse: collapse;
-						   text-align: center;}
+#board_view table, th, td {border: none; text-align: center;}
 #board_view input {width: 600px; height: 25px; padding: 5px;}
 #board_view textarea{width: 600px; height: 500px; resize: none; overflow-y: scroll auto; padding: 5px;}
 table th, td {padding: 10px;}
@@ -111,8 +109,11 @@ table thead {background: #eee;}
 #replyform {
 	width: 600px;
 }
+
+#replyform button {float: right; margin-right: 0; padding:5px;}
+
 #replyform textarea { 
-	width: 600px;
+	width: 580px;
 	height: 100px;
 	padding: 10px;
 	resize: none; overflow-y: scroll auto;
@@ -121,8 +122,23 @@ table thead {background: #eee;}
 
 .reply p {margin: 10px 0; font-size: 0.9rem; color: #444;}
 
-.reply p:nth-of-type(1){
+.reply p:nth-of-type(2){
 	/* 줄바꿈 가능 */
 	white-space: pre-line;
 	line-height: 1.5;
+}
+.replylogin {
+	clear: both;
+	background: #eee;
+	margin: 10px 0;
+	padding: 16px;
+	text-align: center;
+}
+
+.replylogin a {
+	color: #99f;
+}
+
+.replylogin a:hover {
+	text-decoration: underline;
 }

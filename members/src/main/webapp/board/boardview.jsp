@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<script src="https://kit.fontawesome.com/bf7b37fa88.js" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,12 +46,19 @@
 			</table>
 			
 			<!-- 댓글 영역 -->
-			<h3>댓글</h3>
+			<h3>댓글 <i class="fa-regular fa-comment-dots"></i></h3>
 			<c:forEach items="${replyList}" var="reply">
 			<div class="reply">
+				<p>작성자: ${reply.replyer}</p>
 				<p>${reply.rcontent}</p>
-				<p>작성자: ${reply.replyer}(작성일: <fmt:formatDate value ="${reply.rdate}" pattern="yyyy-MM-dd HH:mm:ss a"/>)</p>
-				
+				<p>
+					<span>(작성일: <fmt:formatDate value ="${reply.rdate}" pattern="yyyy-MM-dd HH:mm:ss a"/>)</span>
+					<c:if test="${sessionId eq reply.replyer}">
+						<a href="updatereplyform.do?bno=${board.bno}&rno=${reply.rno}">수정</a>
+						 | <a href="updatereplyform.do?bno=${board.bno}&rno=${reply.rno}"
+						onclick="retrun cofirm('정말로 삭제하시겠습니까?')">삭제</a>
+					</c:if>
+				</p>
 			</div>
 			</c:forEach>
 			<!-- 댓글 등록 -->
@@ -62,8 +70,18 @@
 					<textarea rows="4" cols="50" name="rcontent"
 							  placeholder="댓글을 남겨주세요"></textarea>
 				</p>
-				<button type="submit">등록</button>
+				<c:if test="${not empty sessionId}">
+					<button type="submit">등록</button>
+				</c:if>
 			</form>
+			<!-- 로그인한 사용자만 댓글 등록 가능 -->
+			<c:if test="${empty sessionId}">
+			<div class="replylogin">
+				<a href="/loginform.do">
+					<i class="fa-solid fa-user"></i>로그인한 사용자만 댓글 등록이 가능합니다
+				</a>
+			</div>
+			</c:if>
 		</section>
 	</div>
 	<jsp:include page="../footer.jsp"/>

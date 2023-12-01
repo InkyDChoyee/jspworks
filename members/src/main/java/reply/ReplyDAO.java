@@ -63,4 +63,23 @@ public class ReplyDAO {
 				JDBCUtil.close(conn, pstmt);
 			}
 		}
+		
+		// 댓글 삭제 - 댓글 번호를 검색해서 삭제 = rno
+		public void deletereply(int rno) {
+			try {
+				conn = JDBCUtil.getConnection();
+				String sql = "INSERT INTO reply (rno, bno, rcontent, replyer) "
+						+ "VALUES (seq_rno.NEXTVAL, ?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, r.getBno());
+				pstmt.setString(2, r.getRcontent());
+				pstmt.setString(3, r.getReplyer());
+				// sql 처리
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn, pstmt);
+			}
+		}
 }
