@@ -68,6 +68,34 @@ public class BoardDAO {
 			JDBCUtil.close(conn, pstmt);
 		}
 	}
+	// 게시글 상세보기
+	public Board getBoard(int bno) {
+		Board b = new Board();
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리
+			String sql = "SELECT * FROM board WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				b.setBno(rs.getInt("bno"));
+				b.setTitle(rs.getString("title"));
+				b.setContent(rs.getString("content"));
+				b.setCreateDate(rs.getTimestamp("createdate"));
+				b.setModifyDate(rs.getTimestamp("modifydate"));
+				b.setHit(rs.getInt("hit"));
+				b.setFilename(rs.getString("filename"));
+				b.setId(rs.getString("id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return b;
+	}
 	
 	
 	

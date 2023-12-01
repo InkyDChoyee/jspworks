@@ -148,7 +148,14 @@ public class MainController extends HttpServlet {
 			bDAO.write(b);
 			
 			nextPage = "/board/boardlist.jsp";
+		}else if(command.equals("/boardview.do")) {
+			nextPage = "/board/boardview.jsp";
 		}
+		
+		
+		
+		
+		
 		
 		
 		if(command.equals("/write.do")) {

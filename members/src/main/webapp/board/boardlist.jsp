@@ -30,7 +30,7 @@
 						<!-- b.bno - b.getBno()와 같음 -->
 							<td>${b.bno}</td>
 							<!-- title를 클릭하면 상세보기로 이동함 -->
-							<td><a href="/boardview.do?id=${b.title}">${b.title}</a></td>
+							<td><a href="/boardview.do?bno=${b.bno}">${b.title}</a></td>
 							<td><fmt:formatDate value ="${b.createDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
 							<td>${b.hit}</td>
 							<td>${b.id}</td>
