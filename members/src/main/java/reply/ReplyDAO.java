@@ -68,12 +68,9 @@ public class ReplyDAO {
 		public void deletereply(int rno) {
 			try {
 				conn = JDBCUtil.getConnection();
-				String sql = "INSERT INTO reply (rno, bno, rcontent, replyer) "
-						+ "VALUES (seq_rno.NEXTVAL, ?, ?, ?)";
+				String sql = "DELETE FROM reply WHERE rno = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, r.getBno());
-				pstmt.setString(2, r.getRcontent());
-				pstmt.setString(3, r.getReplyer());
+				pstmt.setInt(1, rno);
 				// sql 처리
 				pstmt.executeUpdate();
 			} catch (SQLException e) {

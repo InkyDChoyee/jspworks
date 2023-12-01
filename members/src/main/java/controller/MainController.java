@@ -211,7 +211,9 @@ public class MainController extends HttpServlet {
 			
 			rDAO.insertreply(r);
 		}else if(command.equals("/deletereply.do")) {
+			int rno = Integer.parseInt(request.getParameter("rno"));
 			// 삭제 처리 메서드 호출
+			rDAO.deletereply(rno);
 		}
 		
 		

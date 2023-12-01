@@ -54,9 +54,8 @@
 				<p>
 					<span>(작성일: <fmt:formatDate value ="${reply.rdate}" pattern="yyyy-MM-dd HH:mm:ss a"/>)</span>
 					<c:if test="${sessionId eq reply.replyer}">
-						<a href="updatereplyform.do?bno=${board.bno}&rno=${reply.rno}">수정</a>
-						 | <a href="updatereplyform.do?bno=${board.bno}&rno=${reply.rno}"
-						onclick="retrun cofirm('정말로 삭제하시겠습니까?')">삭제</a>
+						<a href="/updatereplyform.do?bno=${board.bno}&rno=${reply.rno}">수정</a>
+						 | <a href="/deletereply.do?bno=${board.bno}&rno=${reply.rno}" onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</a>
 					</c:if>
 				</p>
 			</div>
