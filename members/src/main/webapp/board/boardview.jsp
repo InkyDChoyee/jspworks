@@ -18,19 +18,26 @@
 				<tbody>
 					<tr>
 						<td>
-							<input type="text" name="title" value="">
+							<input type="text" name="title" value="${board.title}" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<textarea rows="7" cols="100" name="content" 
-							placeholder="글내용"></textarea>
+							<textarea rows="7" cols="100" name="content" readonly>${board.content}</textarea>
 						</td>
 					</tr>	
 					<tr>
 						<td>
+							<c:if test="${sessionId eq board.id}">
+								<a href="/updateboardform.do?bno=${board.bno}">
+									<button type="button" class="ud_btn">수정</button>
+								</a>
+								<a href="/deleteboard.do?bno=${board.bno}" onclick="return confirm('정말로 삭제하시겠습니까?')">
+									<button type="button" class="ud_btn">삭제</button>
+								</a>
+							</c:if>
 							<a href="/boardlist.do">
-								<button type="button">목록</button>
+								<button type="button" class="list_btn">목록</button>
 							</a>
 						</td>				
 					</tr>

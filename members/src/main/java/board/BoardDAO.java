@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +98,44 @@ public class BoardDAO {
 		return b;
 	}
 	
+	// 게시글 삭제
+	public void deleteboard(int bno) {
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리
+			String sql = "DELETE FROM board WHERE bno= ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 	
-	
+	// 게시글 수정 : 가입과 비슷하나 수정해서 가입시킨다고 생각하면 됨
+	public void updateboard(Board b) {
+		// 현재 날짜와 시간 객체를 생성
+		Timestamp now = new Timestamp(System.currentTimeMillis());
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리 : 수정일 처리는 현재 날짜와 시간을 입력함
+			String sql = "UPDATE board SET title = ?, content = ?, modifydate = ? WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getTitle());
+			pstmt.setString(2, b.getContent());
+			pstmt.setTimestamp(3, now);   // 생성된 현재 날짜 시간 객체
+			pstmt.setInt(4, b.getBno());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 }

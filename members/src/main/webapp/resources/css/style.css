@@ -85,7 +85,9 @@ table thead {background: #eee;}
 						   border-collapse: collapse;
 						   text-align: center;}
 #writeform input {width: 600px; height: 25px; padding: 5px;}
-#writeform textarea{width: 600px; height: 800px; resize: none; overflow-y: scroll auto ;}
+#writeform textarea{width: 600px; height: 500px; resize: none; overflow-y: scroll auto; padding: 5px;}
 table th, td {padding: 10px;}
 table thead {background: #eee;}
-#writeform button {width: 50%; padding: 10px; float: left;}
+#writeform button {width: 100px; padding: 10px;}
+.ud_btn{float: left;}
+.list_btn{float: right;}

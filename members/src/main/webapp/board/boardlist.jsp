@@ -28,12 +28,24 @@
 					<c:forEach items="${boardList}" var="b">
 						<tr>
 						<!-- b.bno - b.getBno()와 같음 -->
-							<td>${b.bno}</td>
-							<!-- title를 클릭하면 상세보기로 이동함 -->
-							<td><a href="/boardview.do?bno=${b.bno}">${b.title}</a></td>
-							<td><fmt:formatDate value ="${b.createDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
-							<td>${b.hit}</td>
-							<td>${b.id}</td>
+							<c:choose>
+								<c:when test="${empty b.modifyDate}">
+									<td>${b.bno}</td>
+									<!-- title를 클릭하면 상세보기로 이동함 -->
+									<td><a href="/boardview.do?bno=${b.bno}">${b.title}</a></td>
+									<!-- 수정일이 있을 경우 수정된 날짜로 값이 표시되고, 없을경우 작성이로 표시 -->
+									<td><fmt:formatDate value ="${b.createDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
+									<td>${b.hit}</td>
+									<td>${b.id}</td>
+								</c:when>
+								<c:otherwise>
+									<td>${b.bno}</td>
+									<td><a href="/boardview.do?bno=${b.bno}">${b.title}</a></td>
+									<td><fmt:formatDate value ="${b.modifyDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
+									<td>${b.hit}</td>
+									<td>${b.id}</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 				</tbody>

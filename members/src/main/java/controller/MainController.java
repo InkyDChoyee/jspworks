@@ -149,16 +149,46 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/board/boardlist.jsp";
 		}else if(command.equals("/boardview.do")) {
+			// 글 제목 클릭시 요청되는 글 번호 받기
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			// 글 상세보기 처리
+			Board board = bDAO.getBoard(bno);
+			// 모델 생성 -> 뷰로 보내기
+			request.setAttribute("board", board);
+			
 			nextPage = "/board/boardview.jsp";
+		}else if(command.equals("/deleteboard.do")) {
+			// 글 제목 클릭시 요청되는 글 번호 받기
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			// 삭제 처리
+			bDAO.deleteboard(bno);
+			
+			nextPage = "/boardlist.do";
+		}else if(command.equals("/updateboardform.do")) {
+			// 수정을 위해서 게시글 가져오기
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			// 게시글 1건 가져오기
+			Board board = bDAO.getBoard(bno);
+			// 모델 생성
+			request.setAttribute("board", board);
+			
+			nextPage = "/board/updateboardform.jsp";
+		}else if(command.equals("/updateboard.do")) {
+			// 게시글 제목, 내용을 파라미터로 받음
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			// 수정 처리 메서드
+			Board b = new Board();
+			b.setTitle(title);
+			b.setContent(content);
+			b.setBno(bno);
+			bDAO.updateboard(b);
+			nextPage = "/boardlist.do";
 		}
 		
-		
-		
-		
-		
-		
-		
-		if(command.equals("/write.do")) {
+		// redirect와 forward 구부하기
+		if(command.equals("/write.do") || command.equals("/updateboard.do")) {
 			// 새로고침 중복 생성 문제 해결
 			response.sendRedirect("/boardlist.do");
 		}else {
