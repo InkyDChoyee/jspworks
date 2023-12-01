@@ -41,7 +41,7 @@
 								<c:otherwise>
 									<td>${b.bno}</td>
 									<td><a href="/boardview.do?bno=${b.bno}">${b.title}</a></td>
-									<td><fmt:formatDate value ="${b.modifyDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
+									<td><small>(수정일)</small> <fmt:formatDate value ="${b.modifyDate}" pattern="yyyy-MM-dd HH:mm:ss a"/></td>
 									<td>${b.hit}</td>
 									<td>${b.id}</td>
 								</c:otherwise>

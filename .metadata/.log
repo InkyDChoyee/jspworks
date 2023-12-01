@@ -2964,3 +2964,64 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.preferences 4 4 2023-12-01 13:44:28.934
+!MESSAGE Exception saving preferences to: C:/jspworks/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.wst.jsdt.web.core.prefs.
+!STACK 0
+java.nio.file.FileSystemException: C:\jspworks\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.wst.jsdt.web.core.prefs: 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileCopy.move(WindowsFileCopy.java:392)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.move(WindowsFileSystemProvider.java:293)
+	at java.base/java.nio.file.Files.move(Files.java:1432)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.write(EclipsePreferences.java:292)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1066)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1042)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalFlush(EclipsePreferences.java:432)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.flush(EclipsePreferences.java:390)
+	at org.eclipse.core.internal.preferences.legacy.PreferenceForwarder.flush(PreferenceForwarder.java:834)
+	at org.eclipse.core.runtime.Plugin.lambda$1(Plugin.java:364)
+	at org.eclipse.core.runtime.Plugin.savePluginPreferences(Plugin.java:371)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager.setIndexState(JsIndexManager.java:412)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager.setStableState(JsIndexManager.java:450)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager$1.done(JsIndexManager.java:366)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEvent(JobListeners.java:160)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEventsAsync(JobListeners.java:140)
+	at org.eclipse.core.internal.jobs.JobListeners.waitAndSendEvents(JobListeners.java:80)
+	at org.eclipse.core.internal.jobs.JobManager.withWriteLock(JobManager.java:524)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:728)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:83)
+
+!ENTRY org.eclipse.core.runtime 4 4 2023-12-01 13:44:28.937
+!MESSAGE Problems saving preferences.
+!STACK 0
+org.osgi.service.prefs.BackingStoreException: Exception saving preferences to: C:/jspworks/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.wst.jsdt.web.core.prefs.
+	at org.eclipse.core.internal.preferences.EclipsePreferences.write(EclipsePreferences.java:300)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1066)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1042)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalFlush(EclipsePreferences.java:432)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.flush(EclipsePreferences.java:390)
+	at org.eclipse.core.internal.preferences.legacy.PreferenceForwarder.flush(PreferenceForwarder.java:834)
+	at org.eclipse.core.runtime.Plugin.lambda$1(Plugin.java:364)
+	at org.eclipse.core.runtime.Plugin.savePluginPreferences(Plugin.java:371)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager.setIndexState(JsIndexManager.java:412)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager.setStableState(JsIndexManager.java:450)
+	at org.eclipse.wst.jsdt.web.core.javascript.search.JsIndexManager$1.done(JsIndexManager.java:366)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEvent(JobListeners.java:160)
+	at org.eclipse.core.internal.jobs.JobListeners.sendEventsAsync(JobListeners.java:140)
+	at org.eclipse.core.internal.jobs.JobListeners.waitAndSendEvents(JobListeners.java:80)
+	at org.eclipse.core.internal.jobs.JobManager.withWriteLock(JobManager.java:524)
+	at org.eclipse.core.internal.jobs.JobManager.endJob(JobManager.java:728)
+	at org.eclipse.core.internal.jobs.WorkerPool.endJob(WorkerPool.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:83)
+Caused by: java.nio.file.FileSystemException: C:\jspworks\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.wst.jsdt.web.core.prefs: 다른 프로세스가 파일을 사용 중이기 때문에 프로세스가 액세스 할 수 없습니다
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:92)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileCopy.move(WindowsFileCopy.java:392)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.move(WindowsFileSystemProvider.java:293)
+	at java.base/java.nio.file.Files.move(Files.java:1432)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.write(EclipsePreferences.java:292)
+	... 17 more
