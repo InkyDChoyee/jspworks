@@ -48,13 +48,16 @@
 			<h3>댓글</h3>
 			<c:forEach items="${replyList}" var="reply">
 			<div class="reply">
-				<p>${reply.rcontent }</p>
+				<p>${reply.rcontent}</p>
 				<p>작성자: ${reply.replyer}(작성일: <fmt:formatDate value ="${reply.rdate}" pattern="yyyy-MM-dd HH:mm:ss a"/>)</p>
 				
 			</div>
 			</c:forEach>
 			<!-- 댓글 등록 -->
 			<form action="/insertreply.do" id="replyform">
+				<input type="hidden" name="bno" value="${board.bno}">
+				<input type="hidden" name="replyer" value="${sessionId}">
+				
 				<p>
 					<textarea rows="4" cols="50" name="rcontent"
 							  placeholder="댓글을 남겨주세요"></textarea>

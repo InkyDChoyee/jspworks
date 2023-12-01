@@ -107,13 +107,22 @@ table thead {background: #eee;}
 .list_btn{float: right;}
 
 
-/* 댓그 스타일 */
+/* 댓글 스타일 */
 #replyform {
 	width: 600px;
 }
-#replyform textarea{ 
+#replyform textarea { 
 	width: 600px;
 	height: 100px;
 	padding: 10px;
 	resize: none; overflow-y: scroll auto;
+}
+#board_view .reply {border-top: 1px dotted #ccc; margin: 10px;}
+
+.reply p {margin: 10px 0; font-size: 0.9rem; color: #444;}
+
+.reply p:nth-of-type(1){
+	/* 줄바꿈 가능 */
+	white-space: pre-line;
+	line-height: 1.5;
 }

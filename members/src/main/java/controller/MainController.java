@@ -198,16 +198,28 @@ public class MainController extends HttpServlet {
 		
 		// 댓글 구현
 		if(command.equals("/insertreply.do")) {
+			// 댓글 폼 데이터 받기
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			String rcontent = request.getParameter("rcontent");
+			String replyer = request.getParameter("replyer");
+			
 			// 댓글 등록 처리
+			Reply r = new Reply();
+			r.setBno(bno);
+			r.setRcontent(rcontent);
+			r.setReplyer(replyer);
+			
+			rDAO.insertreply(r);
+			
 		}
-		
-		
-		
 		
 		// redirect와 forward 구부하기
 		if(command.equals("/write.do") || command.equals("/updateboard.do")) {
 			// 새로고침 중복 생성 문제 해결
 			response.sendRedirect("/boardlist.do");
+		}else if(command.equals("/insertreply.do")) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			response.sendRedirect("/boardview.do?bno=" + bno);
 		}else {
 			// dispatcher가 forward로 보내줌
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

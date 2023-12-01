@@ -20,7 +20,7 @@ public class ReplyDAO {
 			List<Reply> replyList = new ArrayList<Reply>();
 			try {
 				conn = JDBCUtil.getConnection();
-				String sql = "SELECT * FROM reply WHERE bno= ? ";
+				String sql = "SELECT * FROM reply WHERE bno= ? ORDER BY rdate";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, bno);
 				// sql 처리
@@ -43,5 +43,24 @@ public class ReplyDAO {
 				JDBCUtil.close(conn, pstmt, rs);
 			}
 			return replyList;
+		}
+		
+		// 댓글 등록
+		public void insertreply(Reply r) {
+			try {
+				conn = JDBCUtil.getConnection();
+				String sql = "INSERT INTO reply (rno, bno, rcontent, replyer) "
+						+ "VALUES (seq_rno.NEXTVAL, ?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, r.getBno());
+				pstmt.setString(2, r.getRcontent());
+				pstmt.setString(3, r.getReplyer());
+				// sql 처리
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn, pstmt);
+			}
 		}
 }
