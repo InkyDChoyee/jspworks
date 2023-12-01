@@ -16,6 +16,8 @@ import board.Board;
 import board.BoardDAO;
 import member.Member;
 import member.MemberDAO;
+import reply.Reply;
+import reply.ReplyDAO;
 
 @WebServlet("*.do")   // '/'이하의 경로에서 do로 끝나는 확장자는 모두 허용
 public class MainController extends HttpServlet {
@@ -23,10 +25,12 @@ public class MainController extends HttpServlet {
 	// 필드
 	MemberDAO mDAO;
 	BoardDAO bDAO;
+	ReplyDAO rDAO;
        
     public MainController() { // 생성자
     	mDAO = new MemberDAO();
     	bDAO = new BoardDAO();
+    	rDAO = new ReplyDAO();
     }
     
     // 메서드
@@ -153,8 +157,13 @@ public class MainController extends HttpServlet {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			// 글 상세보기 처리
 			Board board = bDAO.getBoard(bno);
+			
+			// 댓글 목록 보기
+			List<Reply> replyList = rDAO.getReplyList(bno);
+			
 			// 모델 생성 -> 뷰로 보내기
 			request.setAttribute("board", board);
+			request.setAttribute("replyList", replyList);
 			
 			nextPage = "/board/boardview.jsp";
 		}else if(command.equals("/deleteboard.do")) {
@@ -186,6 +195,14 @@ public class MainController extends HttpServlet {
 			bDAO.updateboard(b);
 			nextPage = "/boardlist.do";
 		}
+		
+		// 댓글 구현
+		if(command.equals("/insertreply.do")) {
+			// 댓글 등록 처리
+		}
+		
+		
+		
 		
 		// redirect와 forward 구부하기
 		if(command.equals("/write.do") || command.equals("/updateboard.do")) {

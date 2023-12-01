@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="../header.jsp"/>
 	<div id="container">
-		<section id="writeform">
+		<section id="board_view">
 			<h2>글 상세보기</h2>
 			<table>
 				<tbody>
@@ -43,6 +43,24 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<!-- 댓글 영역 -->
+			<h3>댓글</h3>
+			<c:forEach items="${replyList}" var="reply">
+			<div class="reply">
+				<p>${reply.rcontent }</p>
+				<p>작성자: ${reply.replyer}(작성일: <fmt:formatDate value ="${reply.rdate}" pattern="yyyy-MM-dd HH:mm:ss a"/>)</p>
+				
+			</div>
+			</c:forEach>
+			<!-- 댓글 등록 -->
+			<form action="/insertreply.do" id="replyform">
+				<p>
+					<textarea rows="4" cols="50" name="rcontent"
+							  placeholder="댓글을 남겨주세요"></textarea>
+				</p>
+				<button type="submit">등록</button>
+			</form>
 		</section>
 	</div>
 	<jsp:include page="../footer.jsp"/>
