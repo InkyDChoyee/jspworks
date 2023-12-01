@@ -91,11 +91,9 @@ public class BoardDAO {
 				b.setId(rs.getString("id"));
 				
 				// 조회수 1 증가
-				int hit = rs.getInt("hit") + 1;
-				sql = "UPDATE board SET hit = ? WHERE bno = ?";
+				sql = "UPDATE board SET hit = hit+1 WHERE bno = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, hit);
-				pstmt.setInt(2, bno);
+				pstmt.setInt(1, bno);
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
