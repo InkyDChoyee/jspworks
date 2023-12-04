@@ -58,7 +58,18 @@ public class MainController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		// 회원
-		if(command.equals("/memberlist.do")) {
+		if(command.equals("/main.do")) {
+			// 메인 페이지에 게시글 보내기
+			List<Board> boardList = bDAO.getBoardList();
+			out.println(boardList.size() + "개");
+			request.setAttribute("boardList", boardList);
+			
+			if(boardList.size() >= 3) {
+				Board[] newBoards = {boardList.get(0), boardList.get(1), boardList.get(2)};
+				request.setAttribute("boardList", newBoards);
+			}
+			nextPage = "/main.jsp";
+		}else if(command.equals("/memberlist.do")) {
 			// 회원정보를 db에서 가져옴
 			List<Member> memberList = mDAO.getMemberList();
 			// 모델 생성
@@ -217,9 +228,7 @@ public class MainController extends HttpServlet {
 		}
 		
 		
-		
-		
-		// redirect와 forward 구부하기
+		// redirect와 forward 구분하기
 		if(command.equals("/write.do") || command.equals("/updateboard.do")) {
 			// 새로고침 중복 생성 문제 해결
 			response.sendRedirect("/boardlist.do");
@@ -232,5 +241,4 @@ public class MainController extends HttpServlet {
 			dispatch.forward(request, response);
 		}
 	}
-	
 }

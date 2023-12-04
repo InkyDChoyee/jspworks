@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 공통 스타일 */
 * {margin: 0; padding: 0;}
-#container {width: 90%; margin: 30px auto 100px;}
+#container {width: 1200px; margin: 30px auto 100px;}
 ul li {list-style: none;}
 a {text-decoration: none;}
 
@@ -11,18 +11,23 @@ header #logo {width: 20%; float: left; line-height: 80px;}
 #logo h1 a {color: #df9; padding-left: 24px; font-style: italic;}
 #logo h1 a:hover {color: #eee;}
 header nav {width: 70%; float: right;}
-#topMenu {line-height: 80px;}
+#topMenu {line-height: 80px; padding-left: 150px;}
 #topMenu li {float: left; margin: 0 20px;}
 #topMenu li a {color: #fee; padding: 0 20px;}
 #topMenu li a:hover {color: #444;}
 
 /* main 스타일 */
-#main {margin: 0 auto; text-align: center;}
-#main .main_img {margin: 20px; }
+#main {margin: 40px auto; width: 1000px; height: 600px;}
+#main h1 {color: #11f; font-style: italic; padding: 20px 60px;}
+#main .main_img {margin: 16px 30px; float: left;}
 #main .main_img img {border-radius: 5px; width: 400px; height: 500px;}
+#main .newboard {margin: 20px;}
+#main .newboard h3 {margin: 20px;}
+#main .newboard p {line-height: 2.5;}
+
 
 /* 하단메뉴 - footer 스타일 */
-footer {height: 80px; border-top: 2px solid #222;}
+footer {height: 80px; border-top: 2px solid #222; clear: both;}
 #bottomMenu {margin: 10px 20px;}
 #bottomMenu li {float: left; 
 				margin: 10px 0;
