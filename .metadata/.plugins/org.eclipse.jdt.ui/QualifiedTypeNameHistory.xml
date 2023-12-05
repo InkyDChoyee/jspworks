@@ -18,7 +18,6 @@
     <fullyQualifiedTypeName name="member.MemberDAO"/>
     <fullyQualifiedTypeName name="member.Member"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="board.BoardDAO"/>
@@ -27,4 +26,5 @@
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="reply.ReplyDAO"/>
     <fullyQualifiedTypeName name="reply.Reply"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 </qualifiedTypeNameHistroy>

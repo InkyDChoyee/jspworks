@@ -119,7 +119,17 @@ public class MemberDAO {
 		return false;
 	}
 	
-	
+	// ID 중복검사
+	public boolean getDuplicatedId(String id) {
+		boolean result = false;
+		conn = JDBCUtil.getConnection();
+		String sql = "";
+		
+		
+		
+		return result;
+		
+	}
 	
 	
 }
