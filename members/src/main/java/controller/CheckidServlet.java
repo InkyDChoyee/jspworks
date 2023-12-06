@@ -1,4 +1,4 @@
-package ajaxtest;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,23 +9,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/test/checkid")
+import member.MemberDAO;
+
+@WebServlet("/member/checkid")
 public class CheckidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 한글 인코딩 처리
-				request.setCharacterEncoding("utf-8");
-				
-				// 컨텐츠 응답
-				response.setContentType("text/html; charset=utf-8");
-				
-				// 메세지 받기
-				String id = request.getParameter("id");  // 데이터 "message"
-				
-				PrintWriter out = response.getWriter();
-				// 메세지 보내기
-				out.print(id);   // 변수 message
+		request.setCharacterEncoding("utf-8");
+		
+		// 컨텐츠 응답
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		
+		// 메세지 받기
+		String id = request.getParameter("id");
+		
+		MemberDAO dao = new MemberDAO();
+		boolean result = dao.getDuplicatedId(id);
+		if(result) {
+			// 중복 데이터가 있으면
+			out.print("not_usable");
+		}else {
+			out.print("usable");
+		}
 	}
-
 }

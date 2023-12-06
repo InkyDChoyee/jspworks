@@ -122,14 +122,21 @@ public class MemberDAO {
 	// ID 중복검사
 	public boolean getDuplicatedId(String id) {
 		boolean result = false;
-		conn = JDBCUtil.getConnection();
-		String sql = "";
-		
-		
-		
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "SELECT DECODE(count(*), 1, 'true', 'false') AS result FROM member WHERE id = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				// 별칭을 칼럼으로 db에서 데이터를 가져옴
+				result = rs.getBoolean("result");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}// finally {
+		//	JDBCUtil.close(conn, pstmt, rs);
+		//} 
 		return result;
-		
 	}
-	
-	
 }

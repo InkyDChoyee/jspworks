@@ -55,6 +55,7 @@ form fieldset {margin-bottom: 16px;}
 form button {padding: 5px;}
 form label {width: 120px; float: left; padding-left: 20px;}
 form input {padding: 5px;}
+#join button {width: 100px; padding: 5px;}
 
 /* 회원 정보 스타일 */
 #memberview {width: 450px; margin: 20px auto;}

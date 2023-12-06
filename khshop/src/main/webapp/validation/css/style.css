@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+*{margin: 0 auto; padding: 0;}
+body {margin: 40px;}
+form {
+	width: 500px;
+	padding: 20px;
+}
+legend {margin-left:20px;}
+ul {margin: 20px;}
+ul li {
+	list-style: none;
+	line-height: 3;
+	margin-left: 40px;
+}
+ul li label {
+	width: 130px;
+	float: left;
+}
+ul li input {
+	width: 280px;
+	line-height: 2;
+}
+button {padding: 5px;}
