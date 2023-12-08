@@ -145,19 +145,30 @@ public class MainController extends HttpServlet {
 			if(pageNum == null) {  // 페이지 번호를 클릭하지 않았을 때 기본값
 				pageNum = "1";
 			}
-			
 			// 형재 페이지
 			int currentPage = Integer.parseInt(pageNum);
 			// 페이지당 게시글 수 = 10(pageSize)
+			int pageSize = 10;
 			// 1페이지 = 1~10, 2페이지 = 11~20, 3페이지 = 21~30, ...
 			// 페이지의 첫번째행(startRow)
-			int startRow = (currentPage -1) * 10 + 1;
+			int startRow = (currentPage - 1) * pageSize + 1;
 			System.out.println("페이지의 첫 행: " + startRow);
+			
+			// 종료(끝) 페이지 : 전체 게시글 총수 / 페이지당 개수
+			int totalRow = bDAO.getBoardCount();
+			int endPage = totalRow / pageSize;
+			//페이지당 개수(10)로 나누어 떨어지지 않는 경우 코딩
+			endPage = (totalRow % pageSize == 0) ? endPage : endPage + 1;
+			
+			System.out.println("총 게시글 수: " + totalRow);
+			System.out.println("마지막 페이지: " + endPage);
 			
 			// db에서 list를 가져옴
 			List<Board> boardList = bDAO.getBoardList(currentPage);
 			// 모델로 생성
 			request.setAttribute("boardList", boardList);
+			request.setAttribute("Page", currentPage);
+			request.setAttribute("endPage", endPage);
 			// boardlist.jsp 에서 "boardList"를 받음
 			nextPage = "/board/boardlist.jsp";
 		}else if (command.equals("/writeform.do")) {

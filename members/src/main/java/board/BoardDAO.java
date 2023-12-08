@@ -48,7 +48,7 @@ public class BoardDAO {
 		return boardList;
 	}
 	
-	// 게시글 페이지 처리 = 메서드 오버로딩 = 같은변수 + 매개변수 추가
+	// 게시글 페이지 처리 => 메서드 오버로딩 = 같은변수명 + 매개변수 추가
 	public List<Board> getBoardList(int page){
 		List<Board> boardList = new ArrayList<Board>();
 		try {
@@ -56,7 +56,7 @@ public class BoardDAO {
 			conn = JDBCUtil.getConnection();
 			// sql 처리
 			String sql = "SELECT * "
-					+ "FROM (SELECT ROWNUM RN, board.* FROM board ORDER BY bno DESC) "
+					+ "FROM (SELECT ROWNUM RN, bo.* FROM (SELECT * FROM board ORDER BY bno DESC) bo ) "
 					+ "WHERE RN >= ? AND RN <= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (page-1)*10+1); // 시작행(startRow)
@@ -83,6 +83,27 @@ public class BoardDAO {
 		}
 		// db 종료
 		return boardList;
+	}
+	
+	// 총 게시글 수
+	public int getBoardCount() {
+		int total = 0;
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리
+			String sql = "SELECT COUNT(*) AS total FROM board";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();  // 검색된 데이터셋(모음)
+			if(rs.next()) {
+				total = rs.getInt("total");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return total;
 	}
 	
 	// 글쓰기 처리

@@ -53,8 +53,14 @@
 			
 			<!-- 페이지 처리 영역 -->
 			<div class="pagination">
-				<c:forEach var= "i" begin="1" end="5">
+				<!-- 페이지 리스트 -->
+				<c:forEach var= "i" begin="1" end="${endPage}">
+				<c:if test="${page == i}">
+					<a href="/boardlist.do?pageNum=${i}"><b>${i}</b></a>
+				</c:if>
+				<c:if test="${page != i}">
 					<a href="/boardlist.do?pageNum=${i}">${i}</a>
+				</c:if>
 				</c:forEach>
 			</div>
 			
