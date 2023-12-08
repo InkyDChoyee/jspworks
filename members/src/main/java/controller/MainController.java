@@ -195,6 +195,8 @@ public class MainController extends HttpServlet {
 			request.setAttribute("Page", currentPage);     // 현재 페이지
 			request.setAttribute("startPage", startPage);  // 시작 페이지
 			request.setAttribute("endPage", endPage);      // 종료 페이지
+			request.setAttribute("field", field);      // 종료 페이지
+			request.setAttribute("kw", kw);      // 종료 페이지
 			// boardlist.jsp 에서 "boardList"를 받음
 			nextPage = "/board/boardlist.jsp";
 		}else if (command.equals("/writeform.do")) {
