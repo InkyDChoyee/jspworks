@@ -184,11 +184,13 @@ public class MainController extends HttpServlet {
 				kw = "";
 			}
 			
-			List<Board> boardList = bDAO.getBoardList(field, kw);
+			// List<Board> boardList = bDAO.getBoardList(field, kw);
 			
 			// db에서 list를 가져옴
 			// List<Board> boardList = bDAO.getBoardList(currentPage);
 			
+			// 페이지와 검색 동시 처리
+			List<Board> boardList = bDAO.getBoardList(field, kw, currentPage);
 			
 			// 모델로 생성
 			request.setAttribute("boardList", boardList);
