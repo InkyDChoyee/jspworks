@@ -153,22 +153,48 @@ public class MainController extends HttpServlet {
 			// 페이지의 첫번째행(startRow)
 			int startRow = (currentPage - 1) * pageSize + 1;
 			System.out.println("페이지의 첫 행: " + startRow);
-			
+			// 시작 페이지
+			int startPage = startRow / pageSize + 1;
 			// 종료(끝) 페이지 : 전체 게시글 총수 / 페이지당 개수
 			int totalRow = bDAO.getBoardCount();
 			int endPage = totalRow / pageSize;
 			//페이지당 개수(10)로 나누어 떨어지지 않는 경우 코딩
 			endPage = (totalRow % pageSize == 0) ? endPage : endPage + 1;
-			
 			System.out.println("총 게시글 수: " + totalRow);
 			System.out.println("마지막 페이지: " + endPage);
 			
+			// 검색 처리
+			// 임시 변수
+			String _field = request.getParameter("field");
+			String _kw = request.getParameter("kw");
+			// 실제 들어가는 변수
+			String field = "";
+			String kw = "";
+			
+			// null 처리
+			if(_field != null) {   // 필드값이 있는 경우
+				field = _field;
+			}else {   // 필드 값이 없는 경우 (디폴트)
+				field = "title";
+			}
+			
+			if(_kw != null) {   // 검색값이 있는 경우
+				kw = _kw;
+			}else {   // 검색 값이 없는 경우 (디폴트)
+				kw = "";
+			}
+			
+			List<Board> boardList = bDAO.getBoardList(field, kw);
+			
 			// db에서 list를 가져옴
-			List<Board> boardList = bDAO.getBoardList(currentPage);
+			// List<Board> boardList = bDAO.getBoardList(currentPage);
+			
+			
 			// 모델로 생성
 			request.setAttribute("boardList", boardList);
-			request.setAttribute("Page", currentPage);
-			request.setAttribute("endPage", endPage);
+			request.setAttribute("Page", currentPage);     // 현재 페이지
+			request.setAttribute("startPage", startPage);  // 시작 페이지
+			request.setAttribute("endPage", endPage);      // 종료 페이지
 			// boardlist.jsp 에서 "boardList"를 받음
 			nextPage = "/board/boardlist.jsp";
 		}else if (command.equals("/writeform.do")) {

@@ -14,6 +14,18 @@
 	<div id="container">
 		<section id="boardlist">
 			<h2>게시글 목록</h2>
+			<!-- 검색 역역 -->
+			<form action="" method="get">
+				<select name="field">
+					<option value="title" selected>제목</option>
+					<option value="id">작성자</option>
+				</select>
+				<input type="text" name="kw">
+				<button type="submit">검색</button>
+			</form>
+			
+			
+			<!-- 게시글 목록 -->
 			<table>
 				<thead>
 					<tr>
@@ -54,6 +66,15 @@
 			<!-- 페이지 처리 영역 -->
 			<div class="pagination">
 				<!-- 페이지 리스트 -->
+				<!-- 이전 페이지 -->
+				<c:choose>
+					<c:when test="${1 < startPage}">
+						<a href="/boardlist.do?pageNum=${startPage - 1}">&laquo;</a>
+					</c:when>
+					<c:otherwise>
+						<a href="">&laquo;</a>
+					</c:otherwise>
+				</c:choose>
 				<c:forEach var= "i" begin="1" end="${endPage}">
 				<c:if test="${page == i}">
 					<a href="/boardlist.do?pageNum=${i}"><b>${i}</b></a>
@@ -62,6 +83,15 @@
 					<a href="/boardlist.do?pageNum=${i}">${i}</a>
 				</c:if>
 				</c:forEach>
+				<!-- 다음 페이지 -->
+				<c:choose>
+					<c:when test="${endPage > startPage}">
+						<a href="/boardlist.do?pageNum=${startPage + 1}">&raquo;</a>
+					</c:when>
+					<c:otherwise>
+						<a href="">&raquo;</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			
 			<!-- 글쓰기 버튼 -->
