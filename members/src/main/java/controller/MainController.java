@@ -140,8 +140,22 @@ public class MainController extends HttpServlet {
 		
 		// 게시판
 		if(command.equals("/boardlist.do")) {
+			// 페이지 처리
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum == null) {  // 페이지 번호를 클릭하지 않았을 때 기본값
+				pageNum = "1";
+			}
+			
+			// 형재 페이지
+			int currentPage = Integer.parseInt(pageNum);
+			// 페이지당 게시글 수 = 10(pageSize)
+			// 1페이지 = 1~10, 2페이지 = 11~20, 3페이지 = 21~30, ...
+			// 페이지의 첫번째행(startRow)
+			int startRow = (currentPage -1) * 10 + 1;
+			System.out.println("페이지의 첫 행: " + startRow);
+			
 			// db에서 list를 가져옴
-			List<Board> boardList = bDAO.getBoardList();
+			List<Board> boardList = bDAO.getBoardList(currentPage);
 			// 모델로 생성
 			request.setAttribute("boardList", boardList);
 			// boardlist.jsp 에서 "boardList"를 받음

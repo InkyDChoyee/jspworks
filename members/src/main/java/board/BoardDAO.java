@@ -22,8 +22,45 @@ public class BoardDAO {
 			// db 연결
 			conn = JDBCUtil.getConnection();
 			// sql 처리
-			String sql = "SELECT * FROM board ORDER BY createdate DESC";
+			String sql = "SELECT * FROM board ORDER BY bno DESC";
 			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();  // 검색된 데이터셋(모음)
+			while(rs.next()) {
+				// 빈 회원을 생성해서 db에서 정보를 가져와서 세팅
+				Board b = new Board();
+				b.setBno(rs.getInt("bno"));
+				b.setTitle(rs.getString("title"));
+				b.setContent(rs.getString("content"));
+				b.setCreateDate(rs.getTimestamp("createdate"));
+				b.setModifyDate(rs.getTimestamp("modifydate"));
+				b.setHit(rs.getInt("hit"));
+				b.setFilename(rs.getString("filename"));
+				b.setId(rs.getString("id"));
+				// ArrayList에 회원을 추가
+				boardList.add(b);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		// db 종료
+		return boardList;
+	}
+	
+	// 게시글 페이지 처리 = 메서드 오버로딩 = 같은변수 + 매개변수 추가
+	public List<Board> getBoardList(int page){
+		List<Board> boardList = new ArrayList<Board>();
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리
+			String sql = "SELECT * "
+					+ "FROM (SELECT ROWNUM RN, board.* FROM board ORDER BY bno DESC) "
+					+ "WHERE RN >= ? AND RN <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (page-1)*10+1); // 시작행(startRow)
+			pstmt.setInt(2, page*10);  // 페이지당 게시글 수(pageSize)
 			rs = pstmt.executeQuery();  // 검색된 데이터셋(모음)
 			while(rs.next()) {
 				// 빈 회원을 생성해서 db에서 정보를 가져와서 세팅

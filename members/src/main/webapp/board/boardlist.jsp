@@ -50,6 +50,14 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			
+			<!-- 페이지 처리 영역 -->
+			<div class="pagination">
+				<c:forEach var= "i" begin="1" end="5">
+					<a href="/boardlist.do?pageNum=${i}">${i}</a>
+				</c:forEach>
+			</div>
+			
 			<!-- 글쓰기 버튼 -->
 			<div>
 				<a href="/writeform.do"><button type="button">글쓰기</button></a>

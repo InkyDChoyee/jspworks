@@ -83,6 +83,8 @@ form input {padding: 5px;}
 table th, td {padding: 10px;}
 table thead {background: #eee;}
 #boardlist button {padding: 10px;}
+.pagination {text-align: center;}
+.pagenation a {margin: 5px;}
 
 /* 글작성 스타일 */
 #writeform {width: 600px; margin: 20px auto;}
