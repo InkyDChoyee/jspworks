@@ -116,13 +116,18 @@ table thead {background: #eee;}
 .ud_btn{float: left;}
 .list_btn{float: right;}
 
+.uploadfile{float: left;}
+.viewhit{float: right;}
+
 
 /* 댓글 스타일 */
 #replyform {
+	clear: both;
+	margin: 0 20px;
 	width: 600px;
 }
 
-#replyform button {float: right; margin-right: 0; padding:5px;}
+#replyform button {float: right; margin: 10px 20px; padding:5px;}
 
 #replyform textarea { 
 	width: 580px;
@@ -150,6 +155,8 @@ table thead {background: #eee;}
 .replylogin a {
 	color: #99f;
 }
+
+.replytitle{padding-left: 20px;}
 
 .replylogin a:hover {
 	text-decoration: underline;

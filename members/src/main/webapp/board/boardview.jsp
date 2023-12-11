@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
+	<c:if test="${empty sessionId }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다");
+			location.href="/loginform.do";
+		</script>
+	</c:if>
 	<jsp:include page="../header.jsp"/>
 	<div id="container">
 		<section id="board_view">
@@ -27,6 +33,24 @@
 							<textarea rows="7" cols="100" name="content" readonly>${board.content}</textarea>
 						</td>
 					</tr>	
+					<tr class="uploadfile">
+						<td>
+						<c:choose>
+							<c:when test="${not empty board.filename}">
+								${board.filename}<a href="filedown.do?filename=${board.filename}">&nbsp; [다운로드] </a>
+							</c:when>
+							<c:otherwise>
+								<c:out value="첨부파일이 없습니다 "/>							
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+					<tr class="viewhit">
+						<td>
+							<p> 조회수: ${board.hit}
+						</td>
+					</tr>
+					
 					<tr>
 						<td>
 							<c:if test="${sessionId eq board.id}">
@@ -46,7 +70,7 @@
 			</table>
 			
 			<!-- 댓글 영역 -->
-			<h3>댓글 <i class="fa-regular fa-comment-dots"></i></h3>
+			<h3 class="replytitle"> 댓글 <i class="fa-regular fa-comment-dots"></i></h3><br>
 			<c:forEach items="${replyList}" var="reply">
 			<div class="reply">
 				<p>작성자: ${reply.replyer}</p>
