@@ -7,7 +7,7 @@
 	</div>
 	<nav>
 		<c:choose>
-			<c:when test="${empty sessionId}">
+			<c:when test="${empty sessionName}">
 				<ul id="topMenu">
 					<li><a href="/loginform.do">로그인</a></li>
 					<li><a href="/joinform.do">회원가입</a></li>
@@ -17,7 +17,7 @@
 			</c:when>
 			<c:otherwise>
 				<ul id="topMenu">
-					<li><a href="/logout.do">(${sessionId})님 로그아웃</a></li>
+					<li><a href="/logout.do">(${sessionName})님 로그아웃</a></li>
 					<li><a href="/memberview.do?id=${sessionId}">나의 정보</a></li>
 					<li><a href="/boardlist.do">게시판</a></li>
 					<li><a href="/memberlist.do">회원목록</a></li>

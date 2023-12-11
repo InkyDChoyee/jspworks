@@ -96,6 +96,9 @@ public class MainController extends HttpServlet {
 			m.setEmail(email);
 			m.setGender(gender);
 			mDAO.insertmember(m);
+			// 회원가입 후 자동 로그인
+			session.setAttribute("sessionId", m.getId());     // 아이디를 가져와서 sessionId(세션이름) 발급
+			session.setAttribute("sessionName", m.getName()); // 이름을 가져와서 sessionName(세션이름) 발급
 			// 회원가입 후 이동
 			nextPage = "/index.jsp";
 		}else if(command.equals("/memberview.do")) {
@@ -117,22 +120,33 @@ public class MainController extends HttpServlet {
 			m.setId(id);
 			m.setPasswd(passwd);
 			// 로그인 인증
-			boolean result = mDAO.checkLogin(m);
-			if(result == true) {   // 결과가 true 이면 session 발급
-				session.setAttribute("sessionId", id);
-				// 로그인 후 페이지 이동
+			Member member= mDAO.checkLogin(m);
+			String name = member.getName();
+			if(name != null) {
+				session.setAttribute("sessionId", id);      // 아이디 세션 발급
+				session.setAttribute("sessionName", name);  // 이름 세션 발급
 				nextPage = "/index.jsp";
-			}else if(result == false) {   // 결과가 false일때 오류 처리
+			} else {
+				String error = "아이디나 비밀번호를 다시 확인해주세요";
+				request.setAttribute("error", error);
+				nextPage = "/member/loginform.jsp";
+			}
+//			if(rs == true) {   // 결과가 true 이면 session 발급
+//				session.setAttribute("sessionId", id);
+//				// 로그인 후 페이지 이동
+//				nextPage = "/index.jsp";
+//			}else if(result == false) {   // 결과가 false일때 오류 처리
 				// 에러 알림창 띄움
 //				out.println("<script>");
 //				out.println("alert('아이디나 비밀번호를 확인해주세요);");
 //				out.println("history.back();");
 //				out.println("</script>");
-				String error = "아이디나 비밀번호를 다시 확인해주세요";
-				request.setAttribute("error", error);
-				// 에러 발생 후 페이지 이동
-				nextPage = "/member/loginform.jsp";
-			}
+//				String error = "아이디나 비밀번호를 다시 확인해주세요";
+//				request.setAttribute("error", error);
+//				// 에러 발생 후 페이지 이동
+//				nextPage = "/member/loginform.jsp";
+//			}
+			
 		}else if(command.equals("/logout.do")) {
 			session.invalidate();   // 모든 세션 삭제
 			nextPage = "/index.jsp";
