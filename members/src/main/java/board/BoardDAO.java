@@ -185,12 +185,13 @@ public class BoardDAO {
 			// db 연결
 			conn = JDBCUtil.getConnection();
 			// sql 처리
-			String sql = "INSERT INTO board (bno, title, content, id) "
-					+ "VALUES (seq_bno.NEXTVAL, ?, ?, ?)";
+			String sql = "INSERT INTO board (bno, title, content, filename, id) "
+					+ "VALUES (seq_bno.NEXTVAL, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, b.getTitle());
 			pstmt.setString(2, b.getContent());
-			pstmt.setString(3, b.getId());
+			pstmt.setString(3, b.getFilename());
+			pstmt.setString(4, b.getId());
 			// sql 실행
 			pstmt.executeUpdate();
 			

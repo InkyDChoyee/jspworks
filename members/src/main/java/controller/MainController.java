@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import board.Board;
 import board.BoardDAO;
@@ -218,15 +222,36 @@ public class MainController extends HttpServlet {
 		}else if (command.equals("/writeform.do")) {
 			nextPage = "/board/writeform.jsp";
 		}else if (command.equals("/write.do")) {
+			
+			String realFolder ="C:\\jspworks\\members\\src\\main\\webapp\\upload";
+		      int maxSize = 10*1024*1024; //10MB
+		      String encType = "utf-8";   //파일이름 한글 인코딩
+		      DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		      //5가지 인자
+		      MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, policy);
+			
+			
 			// 폼 데이터 닫기
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+			String title = multi.getParameter("title");
+			String content = multi.getParameter("content");
 			// 세션 가져오기(id)
 			String id = (String)session.getAttribute("sessionId");
+			
+			//file 속성
+		    Enumeration<?> files = multi.getFileNames();
+		    String filename = "";
+		    while(files.hasMoreElements()) { //파일이름이 있는 동안 반복
+		       String userFilename = (String)files.nextElement();
+		       
+	           //실제 저장될 이름
+	           filename = multi.getFilesystemName(userFilename);
+		    }
+			
 			// db에 저장
 			Board b = new Board();
 			b.setTitle(title);
 			b.setContent(content);
+			b.setFilename(filename);
 			b.setId(id);
 			// write()호출, 실행
 			bDAO.write(b);
