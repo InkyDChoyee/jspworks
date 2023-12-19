@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
-	<c:if test="${empty sessionId }">
-		<script type="text/javascript">
+	<%-- <c:if test="${empty sessionId }"> --%>
+<!-- 		<script type="text/javascript">
 			alert("로그인이 필요합니다");
 			location.href="/loginform.do";
-		</script>
-	</c:if>
+		</script> -->
+	<%-- </c:if> --%>
 	<jsp:include page="../header.jsp"/>
 	<div id="container">
 		<section id="board_view">
@@ -28,11 +28,6 @@
 							<input type="text" name="title" value="${board.title}" readonly>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<textarea rows="7" cols="100" name="content" readonly>${board.content}</textarea>
-						</td>
-					</tr>	
 					<tr class="uploadfile">
 						<td>
 						<c:choose>
@@ -45,11 +40,63 @@
 						</c:choose>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<c:if test="${not empty board.filename}">
+								<div>
+									<img src="../upload/${board.filename}" alt="">
+								</div>
+							</c:if>
+							<br>
+							${board.content}
+						</td>
+					</tr>	
+					<tr class="like">
+						<td>
+						<c:choose>
+							<c:when test="${empty sessionId}">
+								<p> 좋아요 <i class="fa-solid fa-heart" style="color: #000"></i>
+									<span> x ${voteCount}</span> <br>
+									<a href="#" onclick="location.href='/loginform.do'">(좋아요는 로그인이 필요합니다)</a>
+								</p><br>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${sw eq false}">
+										<p> 좋아요 
+											<a href="/like.do?bno=${board.bno}&id=${sessionId}">
+												<i class="fa-solid fa-heart" style="color: #f99"></i>
+											</a>
+											<span> x ${voteCount}</span><br>
+										</p>
+									</c:when>
+									<c:otherwise>
+										<p> 좋아요 
+											<a href="/like.do?bno=${board.bno}&id=${sessionId}">
+												<i class="fa-regular fa-heart" style="color: #f99"></i>
+											</a>
+											<span> x ${voteCount}</span><br>
+										</p>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
 					<tr class="viewhit">
+						<td>
+							<p> 작성자: ${board.id} 
+						</td>
+						<td>
+							<p> 작성일: ${board.createDate}
+						</td>
 						<td>
 							<p> 조회수: ${board.hit}
 						</td>
 					</tr>
+
+
+		
 					
 					<tr>
 						<td>

@@ -1,0 +1,389 @@
+1. 강아지 먹거리
+<강아지_사료>
+dog_food1   42,800
+dog_food3   48,200
+dog_food5   38,600
+dog_food7   52,500
+dog_food9   39,600
+dog_food11  34,300
+dog_food13  47,800
+dog_food15  56,900
+dog_food17  53,200
+dog_food19  63,200
+dog_food21  28,800
+dog_food23  76,700
+dog_food25  45,200
+dog_food27  89,800
+dog_food29  78,200
+dog_food31  69,100
+dog_food33  23,200
+dog_food35  25,200
+dog_food37  45,500
+dog_food39  49,800
+dog_food41  97,400
+dog_food43  95,600
+
+<강아지_간식>
+dog_snack1   5,300
+dog_snack3   4,600
+dog_snack5   3,800
+dog_snack7   6,200
+dog_snack9   5,700
+dog_snack11  2,300
+dog_snack13  7,100
+dog_snack15  4,100
+dog_snack17  4,800
+dog_snack19  3,100
+dog_snack21  2,900
+dog_snack23  5,400
+dog_snack25  6,100
+dog_snack27  6,400
+dog_snack29  2,400
+dog_snack31  2,200
+dog_snack33  5,200
+dog_snack35  2,300
+dog_snack37  4,800
+dog_snack39  3,300
+dog_snack41  4,200
+dog_snack43  4,400
+dog_snack45  4,600
+dog_snack47  5,500
+
+<강아지_영양제>
+dog_health1    11,200
+dog_health3    26,400
+dog_health5    9,400
+dog_health7    14,500
+dog_health9    8,800
+dog_health11  15,200
+dog_health13  12,300
+
+2. 강아지 용품
+<강아지_집>
+dog_house1   25,900
+dog_house3   29,400
+dog_house5   35,600
+dog_house7   38,500
+dog_house9   42,800
+dog_house11  38,800
+dog_house13  46,700
+dog_house15  32,800
+dog_house17  45,300
+
+<강아지_장난감>
+dog_toy1   2,300
+dog_toy3   1,400
+dog_toy5   3,600
+dog_toy7   2,950
+dog_toy9   2,800
+dog_toy11  1,800
+dog_toy13  2,200
+dog_toy15  1,200
+dog_toy17  1,400
+dog_toy19  1,100
+dog_toy21  3,100
+dog_toy23  1,500
+
+<강아지_밥그릇>
+dog_bowl1   48,800
+dog_bowl3   13,200
+dog_bowl5   33,300
+dog_bowl7   42,600
+dog_bowl9   11,600
+dog_bowl11  62,900
+dog_bowl13  35,700
+
+<강아지_옷>
+dog_clothes1   26,200
+dog_clothes3   27,600
+dog_clothes5   45,000
+dog_clothes7   26,000
+dog_clothes9   24,800
+dog_clothes11  23,000
+dog_clothes13  25,000
+dog_clothes15  24,000
+
+<강아지_산책용품>
+dog_use1   24,000
+dog_use3   42,200
+dog_use5   41,600
+dog_use7   44,000
+dog_use9   52,400
+dog_use11  23,200
+dog_use13  26,400
+dog_use15  24,500
+dog_use17  52,000
+dog_use19  21,200
+dog_use21  178,000
+dog_use23  35,800
+dog_use25  36,400
+dog_use27  194,000
+dog_use29  18,500
+dog_use31  6,700
+dog_use33  7,300
+dog_use35  6,300
+dog_use37  15,300
+dog_use39  2,000
+dog_use41  7,600
+dog_use43  6,600
+dog_use45  3,600
+dog_use47  2,700
+dog_use49  9,800
+dog_use51  10,400
+
+3. 고양이 먹거리
+<고양이_사료>
+cat_food1   75,800
+cat_food3   21,300
+cat_food5   18,600
+cat_food7   36,900
+cat_food9   23,200
+cat_food11  35,800
+cat_food13  42,800
+cat_food15  37,800
+cat_food17  3,900
+cat_food19  4,500
+cat_food21  45,800
+cat_food23  23,200
+cat_food25  29,800
+cat_food27  5,200
+cat_food29  4,300
+cat_food31  3,400
+cat_food33  18,800
+cat_food35  20,800
+cat_food37  12,000
+cat_food39  34,300
+cat_food41  41,900
+cat_food43  43,900
+cat_food45  35,500
+cat_food47  24,600
+cat_food49  32,200
+cat_food51  28,800
+cat_food53  23,100
+cat_food55  26,400
+cat_food57  9,500
+cat_food59  32,600
+
+<고양이_간식>
+cat_snack1   3,800
+cat_snack3   1,300
+cat_snack5   2,500
+cat_snack7   2,300
+cat_snack9   3,600
+cat_snack11  5,800
+cat_snack13  1,500
+cat_snack15  2,400
+cat_snack17  8,800
+cat_snack19  2,200
+cat_snack21  2,200
+cat_snack23  3,500
+cat_snack25  2,700
+cat_snack27  3,900
+cat_snack29  3,900
+cat_snack31  2,500
+cat_snack33  2,200
+cat_snack35  4,800
+cat_snack37  2,100
+cat_snack39  3,200
+cat_snack41  3,500
+cat_snack43  2,400
+cat_snack45  2,900
+cat_snack47  45,300
+cat_snack49  2,400
+cat_snack51  2,700
+cat_snack53  1,600
+cat_snack55  6,400
+cat_snack57  12,800
+cat_snack59  2,100
+
+<고양이_영양제>
+cat_health1   8,600
+cat_health3   9,500
+cat_health5   4,500
+cat_health7   7,200
+cat_health9   4,200
+cat_health11  7,800
+cat_health13  8,800
+
+4. 고양이 용품
+<고양이_집>
+cat_house1   111,000
+cat_house3   39,000
+cat_house5   264,000
+cat_house7   43,000
+cat_house9   68,000
+cat_house11  54,000
+
+<고양이_장난감>
+cat_toy1    25,900
+cat_toy3    4,600
+cat_toy5    3,700
+cat_toy7    2,700
+cat_toy9    2,300
+cat_toy11   3,500
+cat_toy13   1,900
+cat_toy15   4,700
+cat_toy17   4,200
+cat_toy19   3,300
+cat_toy21   2,800
+cat_toy23   4,500
+cat_toy25   3,800
+cat_toy27   3,400
+cat_toy29   2,400
+cat_toy31   5,700
+
+<고양이_밥그릇>
+cat_bowl1   15,800
+cat_bowl3   41,000
+cat_bowl5   28,000
+cat_bowl7   34,000
+cat_bowl9   40,000
+cat_bowl11  22,800
+cat_bowl13  22,000
+
+<고양이_옷>
+cat_clothes1  14,500
+cat_clothes3  14,500
+cat_clothes5  14,500
+
+<고양이_방콕용품>
+cat_use1    42,000
+cat_use3    40,000
+cat_use5    33,500
+cat_use7    28,000
+cat_use9    91,000
+cat_use11   59,000
+cat_use13   113,000
+cat_use15   125,000
+cat_use17   96,000
+cat_use19   78,000
+cat_use21   89,000
+cat_use23   132,000
+cat_use25   23,000
+cat_use27   30,000
+cat_use29   34,000
+cat_use31   37,000
+cat_use33   29,000
+cat_use35   24,000
+cat_use37   28,000
+cat_use39   26,000
+cat_use41   113,000
+cat_use43   46,000
+cat_use45   35,000
+cat_use47   42,000
+
+5. 햄스터 먹거리
+<햄스터_사료>
+ham_food1   11,500
+ham_food3   10,200
+ham_food5   10,700
+ham_food7   7,500
+ham_food9   5,200
+ham_food11  4,600
+ham_food13  4,200
+ham_food15  5,600
+ham_food17  5,200
+ham_food19  7,800
+ham_food21  11,200
+ham_food23  7,300
+ham_food25  5,600
+ham_food27  8,200
+ham_food29  4,500
+ham_food31  5,200
+ham_food33  8,400
+ham_food35  6,100
+ham_food37  5,300
+ham_food39  4,100
+ham_food41  6,200
+ham_food43  8,800
+
+<햄스터_간식>
+ham_snack1   5,800
+ham_snack3   6,400
+ham_snack5   4,600
+ham_snack7   5,200
+ham_snack9   4,800
+ham_snack11  3,200
+ham_snack13  3,500
+ham_snack15  2,700
+ham_snack17  3,600
+ham_snack19  4,800
+ham_snack21  4,400
+ham_snack23  5,100
+
+<햄스터_영양제>
+ham_health1   1,200
+ham_health3   1,700
+ham_health5   2,800
+ham_health7   1,900
+ham_health9   1,300
+ham_health11  1,500
+ham_health13  1,200
+ham_health15  2,300
+ham_health17  2,200
+ham_health19  1,600
+ham_health21  1,200
+
+6. 햄스터 용품
+<햄스터_집>
+ham_home1   25,000
+ham_home3   12,000
+ham_home5   9,900
+ham_home7   20,000
+ham_home9   14,000
+ham_home11  8,000
+ham_home13  10,300
+ham_home15  8,900
+ham_home17  10,600
+ham_home19  9,100
+ham_home21  15,000
+ham_home23  7,800
+
+<햄스터_장난감>
+ham_toy1   20,000
+ham_toy3   5,600
+ham_toy5   8,900
+ham_toy7   13,500
+ham_toy9   28,000
+ham_toy11  18,000
+ham_toy13  24,000
+ham_toy15  5,200
+
+<햄스터_밥그릇>
+ham_bowl1   5,500
+ham_bowl3   7,400
+ham_bowl5   8,800
+ham_bowl7   6,300
+ham_bowl9   6,500
+ham_bowl11  10,500
+ham_bowl13  8,900
+ham_bowl15  12,000
+
+<햄스터_챗바퀴>
+ham_wheel1   30,000
+ham_wheel3   66,000
+ham_wheel5   43,000
+ham_wheel7   38,000
+ham_wheel9   42,000
+ham_wheel11  46,000
+ham_wheel13  55,000
+ham_wheel15  28,000
+ham_wheel17  35,000
+ham_wheel19  36,000
+ham_wheel21  17,000
+ham_wheel23  21,000
+
+<햄스터_이갈이>
+ham_tooth1   2,500
+ham_tooth3   3,200
+ham_tooth5   2,800
+ham_tooth7   4,200
+ham_tooth9   1,800
+ham_tooth11  2,300
+ham_tooth13  3,600
+ham_tooth15  2,200
+ham_tooth17  1,600
+ham_tooth19  1,200
+ham_tooth21  2,100
+ham_tooth23  1,500
+

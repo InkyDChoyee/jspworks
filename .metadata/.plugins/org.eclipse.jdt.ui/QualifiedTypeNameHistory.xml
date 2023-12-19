@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="common.JDBCUtil"/>
     <fullyQualifiedTypeName name="member.Member"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="board.BoardDAO"/>
@@ -36,4 +35,7 @@
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
+    <fullyQualifiedTypeName name="voter.VoterDAO"/>
+    <fullyQualifiedTypeName name="common.JDBCUtil"/>
+    <fullyQualifiedTypeName name="voter.Voter"/>
 </qualifiedTypeNameHistroy>

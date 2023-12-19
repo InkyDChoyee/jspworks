@@ -1,0 +1,66 @@
+@charset "UTF-8";
+@charset "UTF-8";
+/* 공통 스타일 */
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    width: 1300px;
+    height: 100%;
+    background-color: #fefeee;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+#writeform {
+	width: 600px;
+	margin: 20px auto;
+}
+
+section h2{
+	text-align: center;
+}
+
+#writeform table{
+	width: 600px;
+	margin: 20px auto;
+}
+
+#writeform table, th, td{
+	border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
+}
+
+table, th, td{
+	padding: 10px;
+}
+
+#writeform input{
+	width: 570px;
+	height: 30px;
+	padding: 5px;
+}
+
+#writeform textarea{
+	width: 570px;
+	height: 300px;
+	padding: 5px;
+}	
+	
+#writeform button{
+	padding: 5px;
+}

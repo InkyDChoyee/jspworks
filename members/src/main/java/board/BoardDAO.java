@@ -255,7 +255,8 @@ public class BoardDAO {
 	}
 	
 	// 게시글 수정 : 가입과 비슷하나 수정해서 가입시킨다고 생각하면 됨
-	public void updateboard(Board b) {
+	// 파일이 없는 경우의 게시글 수정
+	public void updateboardNoFile(Board b) {
 		// 현재 날짜와 시간 객체를 생성
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		try {
@@ -268,6 +269,28 @@ public class BoardDAO {
 			pstmt.setString(2, b.getContent());
 			pstmt.setTimestamp(3, now);   // 생성된 현재 날짜 시간 객체
 			pstmt.setInt(4, b.getBno());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	public void updateboard(Board b) {
+		// 현재 날짜와 시간 객체를 생성
+		Timestamp now = new Timestamp(System.currentTimeMillis());
+		try {
+			// db 연결
+			conn = JDBCUtil.getConnection();
+			// sql 처리 : 수정일 처리는 현재 날짜와 시간을 입력함
+			String sql = "UPDATE board SET title = ?, content = ?, modifydate = ?, filename=? WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getTitle());
+			pstmt.setString(2, b.getContent());
+			pstmt.setTimestamp(3, now);   // 생성된 현재 날짜 시간 객체
+			pstmt.setString(4, b.getFilename());
+			pstmt.setInt(5, b.getBno());
 			// sql 실행
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

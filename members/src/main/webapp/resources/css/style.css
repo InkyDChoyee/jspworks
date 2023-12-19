@@ -116,9 +116,10 @@ table thead {background: #eee;}
 .ud_btn{float: left;}
 .list_btn{float: right;}
 
-.uploadfile{float: left;}
+.viewwriter {text-align: right;}
 .viewhit{float: right;}
-
+.like{float: right;}
+.uploadfile{clear: both; float: right;}
 
 /* 댓글 스타일 */
 #replyform {

@@ -22,6 +22,8 @@ import member.Member;
 import member.MemberDAO;
 import reply.Reply;
 import reply.ReplyDAO;
+import voter.Voter;
+import voter.VoterDAO;
 
 @WebServlet("*.do")   // '/'이하의 경로에서 do로 끝나는 확장자는 모두 허용
 public class MainController extends HttpServlet {
@@ -30,11 +32,13 @@ public class MainController extends HttpServlet {
 	MemberDAO mDAO;
 	BoardDAO bDAO;
 	ReplyDAO rDAO;
+	VoterDAO vDAO;
        
     public MainController() { // 생성자
     	mDAO = new MemberDAO();
     	bDAO = new BoardDAO();
     	rDAO = new ReplyDAO();
+    	vDAO = new VoterDAO();
     }
     
     // 메서드
@@ -256,19 +260,36 @@ public class MainController extends HttpServlet {
 			// write()호출, 실행
 			bDAO.write(b);
 			
-			nextPage = "/board/boardlist.jsp";
+//			nextPage = "/board/boardlist.jsp";
 		}else if(command.equals("/boardview.do")) {
 			// 글 제목 클릭시 요청되는 글 번호 받기
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			// 글 상세보기 처리
 			Board board = bDAO.getBoard(bno);
+			// 세션 아이디 가져옴
+			String id = (String)session.getAttribute("sessionId");
+			// 좋아요 개수
+			// 해당 게시글(bno)의 총 좋아요 수
+			int voteCount = vDAO.voteCount(bno);
+			System.out.println("좋아요 수: " + voteCount);
 			
 			// 댓글 목록 보기
 			List<Reply> replyList = rDAO.getReplyList(bno);
 			
+			// 하트의 상태 바꾸기 (토글 방식)
+			boolean sw = false;
+			int result = vDAO.voteCheck(bno, id);   // 게시글번호, 세션아이디
+			if(result == 0) {  // 좋아요가 안된 상태
+				sw = true;
+			}else {
+				sw = false;
+			}
+			
 			// 모델 생성 -> 뷰로 보내기
 			request.setAttribute("board", board);
 			request.setAttribute("replyList", replyList);
+			request.setAttribute("voteCount", voteCount);
+			request.setAttribute("sw", sw);
 			
 			nextPage = "/board/boardview.jsp";
 		}else if(command.equals("/deleteboard.do")) {
@@ -288,17 +309,60 @@ public class MainController extends HttpServlet {
 			
 			nextPage = "/board/updateboardform.jsp";
 		}else if(command.equals("/updateboard.do")) {
-			// 게시글 제목, 내용을 파라미터로 받음
+				String realFolder ="C:\\jspworks\\members\\src\\main\\webapp\\upload";
+			      int maxSize = 10*1024*1024; //10MB
+			      String encType = "utf-8";   //파일이름 한글 인코딩
+			      DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			      //5가지 인자
+			      MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, policy);
+			      int bno = Integer.parseInt(multi.getParameter("bno"));
+				
+				
+				// 폼 데이터 닫기
+				String title = multi.getParameter("title");
+				String content = multi.getParameter("content");
+				//file 속성
+			    Enumeration<?> files = multi.getFileNames();
+			    String filename = "";
+			    while(files.hasMoreElements()) { //파일이름이 있는 동안 반복
+			       String userFilename = (String)files.nextElement();
+			       
+		           //실제 저장될 이름
+		           filename = multi.getFilesystemName(userFilename);
+			    }
+				
+				// db에 저장
+				Board b = new Board();
+				b.setTitle(title);
+				b.setContent(content);
+				b.setFilename(filename);
+				b.setBno(bno);
+				
+				if(filename != null) {   // 파일이 있는 경우
+					bDAO.updateboard(b);
+				}else {   // 파일이 없는 경우
+					bDAO.updateboardNoFile(b);
+				}
+				
+//				nextPage = "/board/boardlist.jsp";
+		}else if (command.equals("/like.do")){
 			int bno = Integer.parseInt(request.getParameter("bno"));
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			// 수정 처리 메서드
-			Board b = new Board();
-			b.setTitle(title);
-			b.setContent(content);
-			b.setBno(bno);
-			bDAO.updateboard(b);
-			nextPage = "/boardlist.do";
+			String id = request.getParameter("id");
+			
+			// 좋아요 추가(insert)
+			Voter voter = new Voter();
+			voter.setBno(bno);
+			voter.setMid(id);
+			
+			// 좋아요 유무 확인 체크
+			int result = vDAO.voteCheck(bno, id);
+			if(result == 0) {   // db에 없으면(저장 안됨)
+				vDAO.insertVote(voter);    // 좋아요 추가
+			}else {   // result == 1
+				vDAO.deleteVote(voter);  // 좋아요 삭제
+			}
+			
+
 		}
 		
 		// 댓글 구현
@@ -326,7 +390,8 @@ public class MainController extends HttpServlet {
 		if(command.equals("/write.do") || command.equals("/updateboard.do")) {
 			// 새로고침 중복 생성 문제 해결
 			response.sendRedirect("/boardlist.do");
-		}else if(command.equals("/insertreply.do") || command.equals("/deletereply.do")) {
+		}else if(command.equals("/insertreply.do") || command.equals("/deletereply.do")
+				|| command.equals("/like.do")) {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			response.sendRedirect("/boardview.do?bno=" + bno);
 		}else {
