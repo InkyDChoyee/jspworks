@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import model.Product;
 import model.ProductDAO;
@@ -52,11 +56,33 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("/productform.do")) {
 			nextPage = "/product/pform.jsp";
 		}else if(command.equals("/insertproduct.do")) {
+			String realFolder ="C:\\jspworks\\Market\\src\\main\\webapp\\upload";
+		    int maxSize = 10*1024*1024; //10MB
+			String encType = "utf-8";   //파일이름 한글 인코딩
+			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			//5가지 인자
+			MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, policy);
+
+			
 			// 입력폼의 데이터 받기
-			String pid = request.getParameter("pid");
-			String pname = request.getParameter("pname");
-			int price = Integer.parseInt(request.getParameter("price"));
-			String description = request.getParameter("description");
+			String pid = multi.getParameter("pid");
+			String pname = multi.getParameter("pname");
+			int price = Integer.parseInt(multi.getParameter("price"));
+			String description = multi.getParameter("description");
+			String category = multi.getParameter("category");
+			int pstock =  Integer.parseInt(multi.getParameter("pstock"));
+			String condition = multi.getParameter("condition");
+			
+			// file 파라미터
+			Enumeration<?> files = multi.getFileNames();
+		    String pimage = "";
+		    while(files.hasMoreElements()) { //파일이름이 있는 동안 반복
+		       String userFilename = (String)files.nextElement();
+		       
+	           //실제 저장될 이름
+	           pimage = multi.getFilesystemName(userFilename);
+		    }
+			
 			
 			// 상품 객체 1개 생성
 			Product product = new Product();
@@ -64,6 +90,10 @@ public class MainController extends HttpServlet {
 			product.setPname(pname);
 			product.setPrice(price);
 			product.setDescription(description);
+			product.setCategory(category);
+			product.setPstock(pstock);
+			product.setCondition(condition);
+			product.setPimage(pimage);
 			
 			// db에 등록할 메서드 호출
 			pdao.insertProduct(product);
@@ -80,10 +110,15 @@ public class MainController extends HttpServlet {
 			request.setAttribute("product", product);
 			nextPage = "/product/pinfo.jsp";
 		}
-			
-		// 페이지 이동
-		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
-		dispatch.forward(request, response);
+		
+		if(command.equals("/insertproduct.do")) {
+			response.sendRedirect("/productlist.do");
+		}else {
+			// 페이지 이동(forward), 리다이렉트(redirect)
+			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
+			dispatch.forward(request, response);
+		}
+	
 	}
 
 }

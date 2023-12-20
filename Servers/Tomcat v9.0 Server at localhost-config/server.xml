@@ -154,8 +154,8 @@
 
       
       
-      <Context docBase="C:\\jspworks\\semiproject\\src\\main\\webapp" path="/fileupload" reloadable="true"/>
-      <Context docBase="Market" path="/" reloadable="true" source="org.eclipse.jst.jee.server:Market"/></Host>
+      <Context docBase="C:\\jspworks\\Market\\src\\main\\webapp\\upload" path="/fileupload" reloadable="true"/>
+      <Context docBase="Market" path="/" reloadable="false" source="org.eclipse.jst.jee.server:Market"/></Host>
     </Engine>
   </Service>
 </Server>

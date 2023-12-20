@@ -27,6 +27,14 @@
 	    <version>1.18.30</version>
 	    <scope>provided</scope>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.servlets/cos -->
+	<dependency>
+	    <groupId>com.servlets</groupId>
+	    <artifactId>cos</artifactId>
+	    <version>09May2002</version>
+	</dependency>
+
 	  
   </dependencies>
   

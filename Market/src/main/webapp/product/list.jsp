@@ -18,8 +18,10 @@
 			</c:if>
 			<c:if test="${not empty products}">
 				<c:forEach items="${products}" var="product">
-					<div class="col-4">
-						<img src="../upload/${product.pimage}" style="width: 300px">
+					<div class="col-4 my-5">
+						<c:if test="${not empty product.pimage}">
+							<img src="../upload/${product.pimage}" style="width: 300px; height:300px;">
+						</c:if>	
 						<h3>${product.pname}</h3>
 						<p>${product.category}</p>
 						<p>${product.price}원</p>
