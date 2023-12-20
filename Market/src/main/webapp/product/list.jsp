@@ -18,7 +18,7 @@
 		</tr>
 		<c:forEach items="${products}" var="product">
 			<tr>
-				<td>${product.pid}</td>
+				<td><a href="/productinfo.do?pid=${product.pid}">${product.pid}</a></td>
 				<td>${product.pname}</td>
 				<td>${product.price}</td>
 				<td>${product.regDate}</td>

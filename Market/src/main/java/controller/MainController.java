@@ -39,7 +39,9 @@ public class MainController extends HttpServlet {
 		String command = uri.substring(uri.lastIndexOf("/"));
 		String nextPage = "";
 		
-		if(command.equals("/productlist.do")) {
+		if(command.equals("/main.do")) {
+			nextPage = "/main.jsp";
+		}else if(command.equals("/productlist.do")) {
 			// 목록 보기 메서드 호출
 			List<Product> productlist = pdao.getProductList();
 			// 모델 생성하기
@@ -68,6 +70,15 @@ public class MainController extends HttpServlet {
 			
 			// 경로로 설정해주어야 데이터가 들어감
 			nextPage = "/productlist.do";
+		}else if(command.equals("/productinfo.do")) {
+			String pid = request.getParameter("pid");
+				
+			// 상세보기 메서드 호출
+			Product product = pdao.getProduct(pid);
+			
+			// 모델 생성
+			request.setAttribute("product", product);
+			nextPage = "/product/pinfo.jsp";
 		}
 			
 		// 페이지 이동
