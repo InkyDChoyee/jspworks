@@ -20,7 +20,8 @@
 		</script>
 	</c:if> --%>
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../navbar.jsp"/>
+	<jsp:include page="../navbar.jsp" />
+	<%-- <jsp:include page="../navbar.jsp" /> --%>
 	<div class="mid">
 		<section id="update_form">
 			<h3>상품 수정/삭제</h3>
@@ -39,7 +40,7 @@
 								<div class="td_img">
 									<c:if test="${not empty product.pfilename}">
 										<img src="../fileupload/${product.pfilename}" alt="">
-								</c:if> 
+									</c:if>
 								</div>
 							</td>
 						</tr>
@@ -49,7 +50,7 @@
 								<a href="/deleteproduct.do?pno=${product.pno}"><button type="button" onclick="return confirm('삭제하시겠습니까?')">삭제</button></a>
 							</td>
 						</tr>
-				</c:forEach>
+					</c:forEach>
 				</tbody>
 			</table>
 					<a href="/product/insertproduct.jsp"><button type="submit">상품등록</button></a>

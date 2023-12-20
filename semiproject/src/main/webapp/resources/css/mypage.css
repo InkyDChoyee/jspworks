@@ -508,7 +508,10 @@ select {
 
 .info_edit button:nth-child(1){
     background: #edfed6;
-    margin-left: 200px;
+}
+
+.info_confirm {
+	margin-left: 200px
 }
 
 .member_quit {
@@ -530,6 +533,10 @@ input {
 
 input[readonly] {
     background: #f9f9f9;
+}
+
+.info_edit_btn {
+	margin: 0;
 }
 
 

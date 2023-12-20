@@ -29,7 +29,7 @@
             <div class="error">${error}</div>
             <ul>
                 <li>
-                    <button id="btnJoinMember" class="btn_member_join">회원가입</button>
+                    <a href="/joinform.do"><button id="btnJoinMember" class="btn_member_join">회원가입</button></a>
                     <p>💌 Become a member <br> and Enjoy the benefits!</p>
                 </li>
                 <li><button id="btnFindId" class="btn_member_white">아이디 찾기</button></li>

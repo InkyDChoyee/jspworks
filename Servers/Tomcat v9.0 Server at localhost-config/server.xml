@@ -155,7 +155,7 @@
       
       
       <Context docBase="C:\\jspworks\\semiproject\\src\\main\\webapp" path="/fileupload" reloadable="true"/>
-      <Context docBase="maven-test" path="/maven-test" reloadable="true" source="org.eclipse.jst.jee.server:maven-test"/></Host>
+      <Context docBase="Market" path="/" reloadable="true" source="org.eclipse.jst.jee.server:Market"/></Host>
     </Engine>
   </Service>
 </Server>

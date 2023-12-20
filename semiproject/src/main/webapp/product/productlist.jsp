@@ -20,18 +20,17 @@
 						<h3>멍뭉</h3>
 					</a>
 					<div class="sub_taps">
-						<a href="/categorylist.do?category=강아지"><span>먹거리</span></a> | <a
-							href="/categorylist.do?category=강아지"><span>용품</span></a>
+						<a href="/categorylist.do?category=강아지"><span>먹거리</span></a> | <a href="/categorylist.do?category=강아지"><span>용품</span></a>
 					</div>
 				</div>
-				<c:forEach items="${productList}" var="p">
+				<c:forEach items="${dList}" var="product">
 					<div class="products">
 						<div class="product">
-							<a href="/productview.do?pno=${p.pno}">${p.pno}</a> <img
-								src="../fileupload/${p.pfilename}" alt="">
+							<a href="/productview.do?pno=${product.pno}">${product.pno}</a> <img
+								src="../fileupload/${product.pfilename}" alt="">
 							<div class="descript">
-								<p class="product_title">${p.pname}</p>
-								<p class="product_price">${p.price}</p>
+								<p class="product_title">${product.pname}</p>
+								<p class="product_price">${product.price}</p>
 								<p class="new_icon">NEW</p>
 							</div>
 						</div>
@@ -44,18 +43,17 @@
 						<h3>꼬냥</h3>
 					</a>
 					<div class="sub_taps">
-						<a href="/categorylist.do?category=고양이"><span>먹거리</span></a> | <a
-							href="/categorylist.do?category=고양이"><span>용품</span></a>
+						<a href="/categorylist.do?category=고양이"><span>먹거리</span></a> | <a href="/categorylist.do?category=고양이"><span>용품</span></a>
 					</div>
 				</div>
-				<c:forEach items="${productList}" var="p">
+				<c:forEach items="${cList}" var="product">
 					<div class="products">
 						<div class="product">
-							<a href="/productview.do?pno=${p.pno}">${p.pno}</a> <img
-								src="../fileupload/${p.pfilename}" alt="">
+							<a href="/productview.do?pno=${product.pno}">${product.pno}</a> <img
+								src="../fileupload/${product.pfilename}" alt="">
 							<div class="descript">
-								<p class="product_title">${p.pname}</p>
-								<p class="product_price">${p.price}</p>
+								<p class="product_title">${product.pname}</p>
+								<p class="product_price">${product.price}</p>
 								<p class="new_icon">NEW</p>
 							</div>
 						</div>
@@ -68,18 +66,17 @@
 						<h3>햄찌</h3>
 					</a>
 					<div class="sub_taps">
-						<a href="/categorylist.do?category=햄스터"><span>먹거리</span></a> | <a
-							href="/categorylist.do?category=햄스터"><span>용품</span></a>
+						<a href="/categorylist.do?category=햄스터"><span>먹거리</span></a> | <a href="/categorylist.do?category=햄스터"><span>용품</span></a>
 					</div>
 				</div>
-				<c:forEach items="${productList}" var="p">
+				<c:forEach items="${hList}" var="product">
 					<div class="products">
 						<div class="product">
-							<a href="/productview.do?pno=${p.pno}">${p.pno}</a> <img
-								src="../fileupload/${p.pfilename}" alt="">
+							<a href="/productview.do?pno=${product.pno}">${product.pno}</a> <img
+								src="../fileupload/${product.pfilename}" alt="">
 							<div class="descript">
-								<p class="product_title">${p.pname}</p>
-								<p class="product_price">${p.price}</p>
+								<p class="product_title">${product.pname}</p>
+								<p class="product_price">${product.price}</p>
 								<p class="new_icon">NEW</p>
 							</div>
 						</div>
@@ -92,20 +89,18 @@
 						<h3>이벤트</h3>
 					</a>
 					<div class="sub_taps">
-						<a href="/categorylist.do?category=이벤트"><span>기간 할인</span></a> | <a
-							href="/categorylist.do?category=이벤트"><span>신상품</span></a> | <a
-							href="/categorylist.do?category=이벤트"><span>한정판</span></a> | <a
-							href="/productmanagement.do"><span>등록/수정/삭제</span></a>
+						<a href="/categorylist.do?category=이벤트"><span>기간 할인</span></a> | <a href="/categorylist.do?category=이벤트"><span>신상품</span></a>
+						| <a href="/categorylist.do?category=이벤트"><span>한정판</span></a> | <a href="/productmanagement.do"><span>등록/수정/삭제</span></a>
 					</div>
 				</div>
-				<c:forEach items="${productList}" var="p">
+				<c:forEach items="${eList}" var="product">
 					<div class="products">
 						<div class="product">
-							<a href="/productview.do?pno=${p.pno}">${p.pno}</a> <img
-								src="../fileupload/${p.pfilename}" alt="">
+							<a href="/productview.do?pno=${product.pno}">${product.pno}</a> <img
+								src="../fileupload/${product.pfilename}" alt="">
 							<div class="descript">
-								<p class="product_title">${p.pname}</p>
-								<p class="product_price">${p.price}</p>
+								<p class="product_title">${product.pname}</p>
+								<p class="product_price">${product.price}</p>
 								<p class="new_icon">NEW</p>
 							</div>
 						</div>
@@ -113,8 +108,6 @@
 				</c:forEach>
 			</div>
 		</div>
-
-
 	</div>
 	<jsp:include page="../footer.jsp" />
 </body>

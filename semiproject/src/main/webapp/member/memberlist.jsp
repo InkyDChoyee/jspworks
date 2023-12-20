@@ -11,7 +11,12 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+	<jsp:include page="../navbar.jsp" />
+	<div id="container">
 		<section id="memberlist">
+			<div id="logout">
+				<p><a href="/logout.do">[관리자 로그아웃]</a><p>
+			</div>
 			<table>
 				<thead>
 					<tr>
@@ -39,6 +44,7 @@
 				</tbody>
 			</table>	
 		</section>
+	</div>	
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>

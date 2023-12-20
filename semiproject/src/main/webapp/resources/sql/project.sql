@@ -10,15 +10,24 @@ CREATE TABLE member (
    detailaddress    VARCHAR2(40)
 );
 
-CREATE TABLE purchasedetail (
-   receipt      VARCHAR2(50)    PRIMARY KEY,
-   product      VARCHAR2(40),
-   orderdate    TIMESTAMP       DEFAULT SYSTIMESTAMP,
-   price        NUMBER(25),
-   id           VARCHAR2(20)    NOT NULL,
-   orderno      NUMBER          NOT NULL,
+CREATE TABLE cart (
+   cartnum      NUMBER,
+   cnt			NUMBER,
+   cartdate     TIMESTAMP	DEFAULT SYSTIMESTAMP,
+   pno          NUMBER,
+   id           VARCHAR2(20),
    FOREIGN KEY(id) REFERENCES member,
-   FOREIGN KEY(orderno) REFERENCES orders
+   FOREIGN KEY(pno) REFERENCES product
+);
+CREATE SEQUENCE seq_cartnum NOCACHE;
+
+CREATE TABLE purchasehistory(
+    pdate           TIMESTAMP	DEFAULT SYSTIMESTAMP,
+    pcnt            NUMBER,
+    id              VARCHAR(20),
+    pno             NUMBER,
+    FOREIGN KEY(id) REFERENCES member,
+    FOREIGN KEY(pno) REFERENCES product
 );
 
 CREATE TABLE product (
@@ -28,17 +37,19 @@ CREATE TABLE product (
    p_score      NUMBER,
    sal_num      NUMBER,
    pcontent     VARCHAR2(200),
-   category		VARCHAR2(40)
+   pfilename    VARCHAR2(50),
+   category     VARCHAR2(30)
 );
 CREATE SEQUENCE seq_pno NOCACHE;
 
 CREATE TABLE qa (
-   qno      NUMBER          PRIMARY KEY,
-   qtitle   VARCHAR2(50)    NOT NULL,
-   qname    VARCHAR2(20)    NOT NULL,
-   qfilename   VARCHAR2(100),
-   qdate    TIMESTAMP,
-   qhit     NUMBER,
+   qno       NUMBER          PRIMARY KEY,
+   qtitle    VARCHAR2(50)    NOT NULL,
+   qname     VARCHAR2(20)    NOT NULL,
+   qdate     TIMESTAMP,
+   qhit      NUMBER,
+   qcontent  VARCHAR2(500),
+   qfilename VARCHAR2(50),
    id       VARCHAR2(30)    NOT NULL,
    FOREIGN KEY(id) REFERENCES member
 );
@@ -49,31 +60,19 @@ CREATE TABLE review (
    rtitle    VARCHAR2(50)       NOT NULL,
    rdate     TIMESTAMP,
    rcontent  VARCHAR2(200),
-   rfilename   VARCHAR2(100),
    rrate     NUMBER,
-   likes      NUMBER,
-   receipt   VARCHAR2(50)       NOT NULL,
-   FOREIGN KEY(receipt) REFERENCES purchasedetail
-);
-
-CREATE TABLE orders (
-   orderno          NUMBER          PRIMARY KEY,
-   orderdate        TIMESTAMP       DEFAULT SYSTIMESTAMP,
-   orderprice       NUMBER,               
-   cardcompany      VARCHAR2(30),   
-   count            NUMBER,         
-   orderstatus      VARCHAR2(60),    
-   pno              NUMBER          NOT NULL,
-   id               VARCHAR2(20)    NOT NULL,
-   FOREIGN KEY(id)  REFERENCES member,
-   FOREIGN KEY(pno) REFERENCES product
+   likes     NUMBER,
+   id        VARCHAR2(30),
+   FOREIGN KEY(id) REFERENCES member
 );
 
 CREATE TABLE notice (
    nno      NUMBER          PRIMARY KEY,
    ntitle   VARCHAR2(50)    NOT NULL,
-   nname    VARCHAR2(20)    NOT NULL,
-   nfilename   VARCHAR2(100),
-   ndate    TIMESTAMP,
-   nhit     NUMBER
+   nfilename    VARCHAR2(20)    NOT NULL,
+   ndate    TIMESTAMP       NOT NULL,
+   nhit     NUMBER,
+   ncontent VARCHAR2(500),
+   id       VARCHAR2(30),
+   FOREIGN KEY(id) REFERENCES member
 );

@@ -26,8 +26,6 @@ public class VoterDAO {
 		} finally {
 			JDBCUtil.close(conn, pstmt);
 		}
-	
-	
 	}
 
 	// 좋아요 삭제

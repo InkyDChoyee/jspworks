@@ -23,7 +23,4 @@ public class Voter {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-	
-	
-	
 }

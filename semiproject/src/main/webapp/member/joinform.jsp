@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 폼</title>
+<title>회원 가입폼</title>
 <link rel="stylesheet" href="../resources/css/join_pre.css">
+<script src="../resources/js/jquery-3.7.1.js"></script>
+<script src="../resources/js/validation.js"></script>
 </head>
-<body>
 <body>
 	<div id="container">
 		<div id="top">
@@ -48,6 +50,4 @@
 		</div>
 	</div>
 </body>
-
 </html>
-

@@ -8,6 +8,7 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>
+	<jsp:include page="../navbar.jsp" />
 	<div id="container">
 		<section id="">
 		<h2>상품 수정</h2>
@@ -15,7 +16,7 @@
 			<!-- hidden은 UI를 만들지 않고 데이터를 숨겨서 보낼때 사용 -->
 			<input type="hidden" name="pno" value="${product.pno}">
 			<table>
-				<tbody>	
+				<tbody>
 					<tr>
 						<td><input type="text" name="pname" value="${product.pname}"></td>
 					</tr>

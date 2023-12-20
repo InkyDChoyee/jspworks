@@ -11,11 +11,12 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+	<jsp:include page="../navbar.jsp" />
 	<div id="container">
 		<div id="mid">
 			<div class="mid-top">
 				<div class="view_pic">
-					<img src="#" alt="" class="view_picture">
+					<img src="../fileupload/${productlist.pfilename}" alt="" class="view_picture">
 				</div>
 				<div class="view_order">
 					<div class="view_explan">
@@ -68,8 +69,8 @@
 						<span class="count">(1개)</span>
 					</div>
 					<div class="select_buy">
-						<button>장바구니 담기</button>
-						<button>바로구매</button>
+						<a href="/cart.do?pno=${productlist.pno}&cnt=1"><button type="button">장바구니 담기</button></a>
+						<a href="/orders.do?pno=${productlist.pno}"><button type="button">바로구매</button></a>
 					</div>
 				</div>
 			</div>

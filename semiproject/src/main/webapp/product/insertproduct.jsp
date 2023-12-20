@@ -10,6 +10,7 @@
 </head>
 <body>
    <jsp:include page="/header.jsp" />
+   <jsp:include page="../navbar.jsp" />
    <div id="mid">
       <h3>상품 등록</h3>
       <form action="/insertproduct.do" method="post" name="product" id="mid_form"  enctype="multipart/form-data">

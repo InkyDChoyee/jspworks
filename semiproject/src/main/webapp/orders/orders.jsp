@@ -12,7 +12,6 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../navbar.jsp" />
 	<div id="mid">
 		<h3>ORDER</h3>
 		<div class="mid-top">
@@ -21,7 +20,7 @@
 					<tbody>
 						<tr>
 							<td rowspan="2" class="rowspan2">혜택 정보</td>
-							<td class="first_td">${member.name}님, 환영합니다</td>
+							<td class="first_td">${member.name}님,환영합니다</td>
 						</tr>
 						<tr class="second_tr">
 							<td class="second_td"><a href="#">사용 가능 쿠폰 : 1개</a></td>
@@ -34,64 +33,66 @@
 					장바구니에서 가능합니다.</div>
 				<table>
 					<tbody>
-						<tr class="tr1">
+						<tr>
 							<td colspan="9">상품 주문내역</td>
 						</tr>
 						<tr class="table_td_head">
-							<td class="td1"><input type="checkbox"></td>
-							<td class="td2">이미지</td>
-							<td class="td3">상품정보</td>
-							<td class="td4">판매가</td>
-							<td class="td5">수량</td>
-							<td class="td6">쿠폰여부</td>
-							<td class="td7">배송구분</td>
-							<td class="td8">배송비</td>
-							<td class="td9">합계</td>
+							<td><input type="checkbox"></td>
+							<td>이미지</td>
+							<td>상품정보</td>
+							<td>판매가</td>
+							<td>수량</td>
+							<td>쿠폰여부</td>
+							<td>배송구분</td>
+							<td>배송비</td>
+							<td>상품합계</td>
 						</tr>
 						<c:choose>
 							<c:when test="${!empty product }">
-								<tr class="tr3">
-									<td><input type="checkbox"></td>
-									<td><img src="../fileupload/${product.pfilename}" alt=""></td>
-									<td>${product.pname}
+								<tr class="tr2">
+									<td class="td1"><input type="checkbox"></td>
+									<td class="td2"><a href="#"><img
+											src="../fileupload/${product.pfilename}" alt=""></a></td>
+									<td class="td3">${product.pname}
 										<p class="new_icon">NEW</p>
 									</td>
-									<td>${product.price}</td>
-									<td>${product.cnt}</td>
-									<!-- orders 테이블에 수량  -->
-									<td>No</td>
-									<td>기본배송</td>
-									<td>3,000원</td>
-									<td><span class="result">${cart.price + 3000}</span></td>
+									<%--  <td><span class="p_price">${product.price}</span></td>
+                                <td><span class="p_count">${product.cnt}</span></td> --%>
+									<td class="td4"><span class="p_price">${product.price}원</span></td>
+									<td class="td5"><span class="p_count">1</span></td>
+									<td class="td6">No</td>
+									<td class="td7">기본배송</td>
+									<td class="td8">3,000원</td>
+									<td class="td9"><span class="result"></span></td>
 								</tr>
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${cartlist }" var="cart">
-									<tr class="tr3">
-										<td><input type="checkbox"></td>
-										<td><img src="../fileupload/${cart.pfilename}" alt=""></td>
-										<td>${cart.pname}
+									<tr>
+										<td class="td1"><input type="checkbox"></td>
+										<td class="td2"><img
+											src="../fileupload/${cart.pfilename}" alt=""></td>
+										<td class="td3">${cart.pname}
 											<p class="new_icon">NEW</p>
 										</td>
-										<td>${cart.price}</td>
-										<td>${cart.cnt}</td>
+										<td class="td4"><span class="p_price">${cart.price}</span></td>
+										<td class="td5"><span class="p_count">1</span></td>
 										<!-- orders 테이블에 수량  -->
-										<td>No</td>
-										<td>기본배송</td>
-										<td>3,000원</td>
-										<td><span class="result">${cart.price + 3000}</span></td>
+										<td class="td6">No</td>
+										<td class="td7">기본배송</td>
+										<td class="td8">3,000원</td>
+										<td class="td9"><span class="result"></span></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 
-						<tr class="tr4">
+						<tr class="tr3">
 							<td colspan="9"><span class="order_config_small_text">상품구매금액
-									<span class="result">(가격)</span>원 + 배송비 3,000원 = 합계 :
+									<span class="result"></span>원 + 배송비 3,000원 = 합계 :
 							</span><span class="order_config_big_text"><span
-									class="final_result">(가격+배송비)</span></span> <span
-								class="order_config_small_text"><span
-									class="final_result">원</span></span></td>
+									class="final_result"></span></span> <span
+								class="order_config_small_text">원</span></td>
 						</tr>
 					</tbody>
 				</table>
@@ -121,13 +122,13 @@
 							<th>주소 <span class="required">*</span></th>
 							<td>
 								<div class="order_address">
-									<input type="text" size="10" value="${member.zip_code}"
-										readonly>
+									<input type="text" class="copiedad1" size="10"
+										value="${member.zip_code}" readonly>
 									<button>우편번호 ></button>
-									<br> <input type="text" size="30"
+									<br> <input type="text" class="copiedad2" size="30"
 										value="${member.address}" readonly> 기본주소 <br> <input
-										type="text" size="30" value="${member.detailaddress}" readonly>
-									나머지주소
+										type="text" class="copiedad3" size="30"
+										value="${member.detailaddress}" readonly> 나머지주소
 								</div>
 							</td>
 						</tr>
@@ -137,8 +138,9 @@
 									<option value="02">02</option>
 									<option value="031">031</option>
 									<option value="032">032</option>
-							</select> - <input type="text" size="5" maxlength="4" readonly> -
-								<input type="text" size="5" maxlength="4" readonly></td>
+							</select> - <input class="copiedt1" type="text" size="5" maxlength="4"
+								readonly> - <input class="copiedt2" type="text" size="5"
+								maxlength="4" readonly></td>
 						</tr>
 						<tr>
 							<th>휴대전화 <span class="required">*</span></th>
@@ -178,18 +180,20 @@
 						<tr>
 							<th>배송지 선택</th>
 							<td><input type="radio" id="order" name="address"
-								value="same"><label for="order">주문자와 동일</label> <input
-								type="radio" id="deliver" name="address" value="new"><label
-								for="deliver">새로운 배송지</label></td>
+								value="same" onchange="copyAddress()"><label for="order">주문자와
+									동일</label> <input type="radio" id="deliver" name="address" value="new"
+								onchange="clearAddress()"><label for="deliver">새로운
+									배송지</label></td>
 						</tr>
 						<tr>
 							<th>주소 <span class="required">*</span></th>
 							<td>
-								<div class="order_address">
-									<input type="text" size="10">
+								<div class="deliver_address">
+									<input class="copyAddress1" type="text" size="10">
 									<button>우편번호 ></button>
-									<br> <input type="text" size="30"> 기본주소 <br>
-									<input type="text" size="30"> 나머지주소
+									<br> <input class="copyAddress2" type="text" size="30">
+									기본주소 <br> <input class="copyAddress3" type="text"
+										size="30"> 나머지주소
 								</div>
 							</td>
 						</tr>
@@ -199,8 +203,9 @@
 									<option value="02">02</option>
 									<option value="031">031</option>
 									<option value="032">032</option>
-							</select> - <input type="text" size="5" maxlength=4> - <input
-								type="text" size="5" maxlength=4></td>
+							</select> - <input class="copytel1" type="text" size="5" maxlength=4>
+								- <input class="copytel2" type="text" size="5" maxlength=4>
+							</td>
 						</tr>
 						<tr>
 							<th>휴대전화 <span class="required">*</span></th>
@@ -209,8 +214,9 @@
 									<option value="011">011</option>
 									<option value="016">016</option>
 									<option value="019">019</option>
-							</select> - <input type="text" size="5" maxlength=4> - <input
-								type="text" size="5" maxlength=4></td>
+							</select> - <input class="copyphone1" type="text" size="5" maxlength=4>
+								- <input class="copyphone2" type="text" size="5" maxlength=4>
+							</td>
 						</tr>
 						<tr>
 							<th>배송메시지</th>
@@ -242,12 +248,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><span class="final_result">${product.price + 3000}</span>
-								원</td>
+							<td><span><span class="final_result"></span></span> 원</td>
 							<td>- <span>0 </span> 원
 							</td>
-							<td>= <span class="final_result">${product.price + 3000}
-							</span> 원
+							<td>= <span><span class="final_result"></span></span> 원
 							</td>
 						</tr>
 					</tbody>
@@ -261,7 +265,7 @@
 					<div class="method_detail">
 						<div class="select_method">
 							<input type="radio" id="bankbook" name="method_payment"
-								value="bankbook"><label for="bankbook"> 무통장 입금</label> <input
+								value="bankbook" checked><label for="bankbook"> 무통장 입금</label> <input
 								type="radio" id="card" name="method_payment" value="card"><label
 								for="card"> 카드결제</label> <input type="radio" id="kakao"
 								name="method_payment" value="kakao"><label for="kakao">
@@ -293,7 +297,7 @@
 									<p>현금 영수증 신청</p>
 								</div>
 								<div class="bill_yes">
-									<input type="radio" id="yes" name="bill" value="yes"><label
+									<input type="radio" id="yes" name="bill" value="yes" checked><label
 										for="yes">현금영수증 신청</label> <input type="radio" id="no"
 										name="bill" value="no"><label for="no">신청 안함</label>
 									<table>
@@ -302,18 +306,18 @@
 												<td class="bill_yes_td">구분</td>
 												<td><input type="radio" id="personal" name="who"
 													value="personal"><label for="personal">개인</label> <input
-													type="radio" id="company" name="who" value="company"><label
+													type="radio" id="company" name="who" value="company" checked><label
 													for="company">사업자</label></td>
 											</tr>
 											<!-- <tr class="select_personal">
-                                                    <td>핸드폰 번호</td>
-                                                    <td><select name="phone" id="phone">
-                                                        <option value="010">010</option>
-                                                        <option value="011">011</option>
-                                                        <option value="016">016</option>
-                                                        <option value="019">019</option>
-                                                    </select>-<input type="text">-<input type="text"></td>
-                                                </tr> -->
+                                            <td>핸드폰 번호</td>
+                                            <td><select name="phone" id="phone">
+                                                <option value="010">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="019">019</option>
+                                            </select>-<input type="text">-<input type="text"></td>
+                                        </tr> -->
 											<tr class="select_company">
 												<td class="bill_yes_td">사업자 번호</td>
 												<td><input type="text" size="15"></td>
@@ -337,7 +341,7 @@
 						<div class="final_config_price">
 							<p>최종결제 금액</p>
 							<p>
-								<span class="final_result">${product.price + 3000}</span>원
+								<span><span class="final_result"></span></span>원
 							</p>
 						</div>
 						<p>
@@ -346,12 +350,10 @@
 						</p>
 						<c:choose>
 							<c:when test="${!empty product }">
-								<a href="/purchaseconfirm.do?pno=${product.pno }"><button
-										type="button" onclick="return confirm('결제하시겠습니까?')">결제하기</button></a>
+								<a href="/purchaseconfirm.do?pno=${product.pno }"><button type="button">결제하기</button></a>
 							</c:when>
 							<c:otherwise>
-								<a href="/purchaseconfirm.do"><button type="button"
-										onclick="return confirm('결제하시겠습니까?')">결제하기</button></a>
+								<a href="/purchaseconfirm.do"><button type="button">결제하기</button></a>
 							</c:otherwise>
 						</c:choose>
 					</div>

@@ -18,7 +18,7 @@ public class ProductDAO {
 
 	//상품 전체 목록보기
 	public List<ProductVO> getProductList() {
-		List<ProductVO> productList = new ArrayList<>();
+		List<ProductVO> productList = new ArrayList();
 		try {
 			conn = JDBCUtil.getConnection();
 			String sql = "select * from product";
@@ -176,4 +176,102 @@ public class ProductDAO {
 		}
 		return categoryList;
 	}
+	
+	//끝페이지 계산하는 메서드
+	 public int getpListcount() {
+	    	int total=0;
+	    		
+		   try {
+			   conn=JDBCUtil.getConnection();
+			   String sql = "select count(*) as total from product ";
+			pstmt = conn.prepareStatement(sql);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt("total");
+			}						
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+	    	
+			return total;
+	    }
+
+	//상품목록 검색 (페이지 나누기 처리됫슴)
+	public List<ProductVO> getCategoryList(int page, String category) {
+		List<ProductVO> categoryList = new ArrayList<>();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "select *  "
+					   + "from (select rownum as RN, pr.* from(select * from product order by pno desc) pr) "
+				   		+ " where RN >= ? and RN <= ? and category =? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, (page-1)*5+1);
+			pstmt.setInt(2, page*5);
+			pstmt.setString(3, "%" + category + "%");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductVO prd = new ProductVO();
+				prd.setPno(rs.getInt("pno"));
+				prd.setPname(rs.getString("pname"));
+				prd.setPrice(rs.getInt("price"));
+				prd.setP_score(rs.getInt("p_score"));
+				prd.setSal_num(rs.getInt("sal_num"));
+				prd.setPcontent(rs.getString("pcontent"));
+				prd.setCategory(rs.getString("category"));
+				prd.setPfilename(rs.getString("pfilename"));
+
+				categoryList.add(prd);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return categoryList;
+	}
+	
+          //전체상품 출력 메서드(페이지 처리됫음)
+	public List<ProductVO> getProductList2(int page) {
+		List<ProductVO> productList = new ArrayList<ProductVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "select *  "
+					   + "from (select rownum as RN, pr.* from(select * from product order by pno desc) pr) "
+				   		+ " where RN >= ? and RN <= ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (page-1)*10+1);
+			pstmt.setInt(2, page*10);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				ProductVO p = new ProductVO();
+				p.setPno(rs.getInt("pno"));
+				p.setPname(rs.getString("pname"));
+				p.setPrice(rs.getInt("price"));
+				p.setP_score(rs.getInt("p_score"));
+				p.setSal_num(rs.getInt("sal_num"));
+				p.setPcontent(rs.getString("pcontent"));
+				p.setCategory(rs.getString("category"));
+				p.setPfilename(rs.getString("pfilename"));
+
+				productList.add(p);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return productList;
+	}
+	
+	
 }

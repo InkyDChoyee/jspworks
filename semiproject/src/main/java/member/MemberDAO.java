@@ -130,6 +130,30 @@ public class MemberDAO {
 		return m;
 	}
 	
+	//회원정보 수정
+	public void updateMember(String id, MemberVO m) {
+		
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "update member set passwd = ?, email = ?, phone = ? , zip_code = ? , address = ? , detailaddress = ? "
+					+ "  where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getPasswd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getPhone());
+			pstmt.setString(4, m.getZip_code());
+			pstmt.setString(5, m.getAddress());
+			pstmt.setString(6, m.getDetailaddress());
+			pstmt.setString(7, id);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 	
 	//회원 탈퇴
 	public void deletemember(String id) {

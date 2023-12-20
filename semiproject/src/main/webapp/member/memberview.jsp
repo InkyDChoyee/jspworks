@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../resources/css/mypage.css">
 </head>
 <body>
- <c:set var="member" value="${request.member}" />
+ <c:set var="member" value="${member}" />
 	<jsp:include page="../header.jsp" />
 	<jsp:include page="../navbar.jsp"/>
 	<div id="mid">
@@ -18,7 +18,7 @@
             <div class="mid-top">
                 <div class="member_info">
                     <img src="#" alt="">
-                    <p>${member.name}님! 저희 쇼핑몰을 이용해 주셔서 감사합니다. </p>
+                    <p>${sessionName}님! 저희 쇼핑몰을 이용해 주셔서 감사합니다. </p>
                 </div>
             </div>
             <div class="mid-mid">
@@ -32,47 +32,46 @@
                             <tbody>
                                 <tr>
                                     <th>아이디 <span class="required">*</span></th>
-                                    <td><input type="text" size="10" readonly placeholder="${member.id }"></td>
+                                    <td><input type="text" size="10" readonly placeholder="${sessionId}"></td>
                                 </tr>
                                 <tr>
                                     <th>비밀번호 <span class="required">*</span></th>
-                                    <td><input type="password" size="10"></td>
+                                    <td><input type="password" size="10" name = "passwd"></td>
                                 </tr>
                                 <tr>
                                     <th>비밀번호 확인 <span class="required">*</span></th>
-                                    <td><input type="password" size="10"></td>
+                                    <td><input type="password" size="10" name = "passwd2"></td>
                                 </tr>
                                 <tr>
                                     <th>이름 <span class="required">*</span></th>
-                                    <td><input type="text" size="10" readonly placeholder="${member.name }"></td>
+                                    <td><input type="text" size="10" readonly placeholder="${sessionName}"></td>
                                 </tr>
                                 <tr>
                                     <th>주소 <span class="required">*</span></th>
                                     <td>
                                         <div class="order_address">
-                                            <input type="text" size="10"><button>우편번호 ></button> <br>
-                                            <input type="text" size="30" placeholder="${member.address }"> 기본주소 <br>
-                                            <input type="text" size="30" placeholder="${member.detailaddress}"> 나머지주소
+                                            <input type="text" size="10" name="zip_code"><button>우편번호</button> <br>
+                                            <input type="text" size="30" placeholder="${member.address}" name="address"> 기본주소 <br>
+                                            <input type="text" size="30" placeholder="${member.detailaddress}" name="detailaddress"> 나머지주소
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>휴대전화 <span class="required">*</span></th>
-                                    <td>
-                                    	<input type="text" readonly placeholder="${member.phone}" size="10">
-                                        <select name="mobilephone1" id="mobilephone1">
-                                            <option value="02">010</option>
-                                            <option value="031">011</option>
-                                        <option value="032">019</option>
-                                        </select> -
-                                        <input type="text" size="5" maxlength=4> -
-                                        <input type="text" size="5" maxlength=4>
-                                    </td>
-                                </tr>
+								    <th>휴대전화 <span class="required">*</span></th>
+								    <td>
+								        <input type="text" readonly placeholder="${member.phone}" size="10">
+								        <select name="mobilephone1" id="mobilephone1">
+								            <option value="02">010</option>
+								            <option value="031">011</option>
+								            <option value="032">019</option>
+								        </select> -
+								        <input type="text" size="9" maxlength="8" name="phone">
+								    </td>
+								</tr>
                                 <tr>
                                     <th>SMS 수신여부 <span class="required">*</span></th>
                                     <td>
-                                        <input type="radio" name="receive" value="agree"> 수신함
+                                        <input type="radio" name="receive" value="agree" checked> 수신함
                                         <input type="radio" name="receive" value="disagree"> 수신안함 <br>
                                         <span class="sms_info">쇼핑몰에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다</span>
                                     </td>
@@ -80,17 +79,15 @@
                                 <tr>
                                     <th>이메일 <span class="required">*</span></th>
                                     <td>
-                                        <input type="text" placeholder="${member.email}">
+                                        <input type="text" placeholder="${member.email}" name="email">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="basic_info_btn">
                             <div class="info_edit">
-                            	<a href="/updatemember.do?id=${member.id}">
-                                	<button type="button">회원정보 수정</button>
-                                </a> 
-                                <button type="reset">취소</button>
+                               	<button class="info_confirm" type="submit">회원정보 수정</button>
+                                <a href="/main.jsp"><button class="info_edit_btn" type="button">취소</button></a>
                                 
                             </div>
                             <div class="member_quit">

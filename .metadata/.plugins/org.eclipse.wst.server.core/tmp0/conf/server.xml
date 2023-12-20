@@ -154,8 +154,8 @@
 
       
       
-      <Context docBase="C:\jspworks\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\\jspworks\\semiproject\\src\\main\\webapp" path="/fileupload" reloadable="true"/>
-      <Context docBase="C:\jspworks\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\maven-test" path="/maven-test" reloadable="true" source="org.eclipse.jst.jee.server:maven-test"/></Host>
+      <Context docBase="C:\\jspworks\\semiproject\\src\\main\\webapp" path="/fileupload" reloadable="true"/>
+      <Context docBase="C:\jspworks\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Market" path="" reloadable="true" source="org.eclipse.jst.jee.server:Market"/></Host>
     </Engine>
   </Service>
 </Server>
