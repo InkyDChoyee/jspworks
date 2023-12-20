@@ -8,8 +8,15 @@
 <title>KHMarket</title>
 </head>
 <body>
-	<h1>웹 마켓에 오신 것을 환영합니다</h1>
-	<h3><a href="/productlist.do">상품 목록</a></h3>
-	<h3><a href="/productform.do">상품 등록</a></h3>
+	<%-- <%@ include file="header.jsp" %> --%>
+	<jsp:include page="header.jsp"/>
+	<div class="container my-3">
+		<h1 class="text-center">웹 마켓에 오신 것을 환영합니다</h1>
+		<div class="text-center my-4">
+			<img src="resources/images/main.jpg" alt="집이미지" style="width:500px" class="rounded-lg">
+		</div>
+	</div>
+	<jsp:include page="footer.jsp"/>
+	<%-- <%@ include file="footer.jsp" %> --%>
 </body>
 </html>
