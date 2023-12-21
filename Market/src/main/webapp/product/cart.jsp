@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 		<div class="row my-3">
 			<table>
 				<tr>
-					<td align="left"><a href="" class="btn btn-danger">삭제하기</a></td>
+					<td align="left"><a href="/deletecart.do" class="btn btn-danger">삭제하기</a></td>
 					<td align="right"><a href="" class="btn btn-success">주문하기</a></td>
 				</tr>
 			</table>
@@ -30,15 +31,15 @@
 						<c:forEach items="${cartlist}" var="product">
 							<tr>
 								<td>${product.pid}-${product.pname}</td>
-								<td>${product.price}</td>
+								<td><fmt:formatNumber value="${product.price}" pattern="#,##0"/></td>
 								<td>${product.quantity}</td>
-								<td>${product.price*product.quantity}</td>
+								<td><fmt:formatNumber value="${product.price*product.quantity}" pattern="#,##0"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>	
 					<tfoot>
 						<tr>
-							<td></td><td></td><td>총액</td><td>${sum}</td><td></td>
+							<td></td><td></td><td>총액</td><td><fmt:formatNumber value="${sum}" pattern="#,##0"/></td><td></td>
 						</tr>
 					</tfoot>
 			

@@ -147,14 +147,12 @@ public class MainController extends HttpServlet {
 					goodsQnt.setQuantity(goodsQnt.getQuantity() + 1);
 				}
 			}
-			// 장바구니에 추가한 적이 없으면 수량을 1로 정함
+			// 장바구니에 해당 상품을 추가한 적이 없으면 수량을 1로 정함
 			if(cnt == 0) {
 				goods.setQuantity(1);
 				list.add(goods);
 			}
-			
-			
-			nextPage = "/productinfo.do?pid=" + pid;
+//			nextPage = "/productinfo.do?pid=" + pid;
 		}else if(command.equals("/cart.do")) {  // 장바구니
 			// 상품 세션 유지
 			List<Product> cartlist = (ArrayList<Product>)session.getAttribute("cartlist");
@@ -177,10 +175,20 @@ public class MainController extends HttpServlet {
 			
 			
 			nextPage = "/product/cart.jsp";
+		}else if(command.equals("/deletecart.do")) {  // 장바구니
+			// 장바구니 품목 전체 삭제(세션 삭제)
+			session.invalidate();
+			
 		}
-		
+			
+			
 		if(command.equals("/insertproduct.do")) {
 			response.sendRedirect("/productlist.do");
+		}else if(command.equals("/deletecart.do")) {
+			response.sendRedirect("/cart.do");
+		}else if(command.equals("/addcart.do")) {
+			String pid = request.getParameter("pid");
+			response.sendRedirect("/productinfo.do?pid=" + pid);
 		}else {
 			// 페이지 이동(forward), 리다이렉트(redirect)
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

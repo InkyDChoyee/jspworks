@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 				<p><b>분류</b> : ${product.category}</p>
 				<p><b>재고수</b> : ${product.pstock}</p>
 				<p><b>상태</b> : ${product.condition}</p>
-				<p><b>가격</b> : ${product.price}</p>
+				<p><b>가격</b> : <fmt:formatNumber value="${product.price}" pattern="#,##0"/></p>
 				<form action="/addcart.do?pid=${product.pid}" name="addform" method="post">
 					<!-- 상품 주문 버튼을 클릭하면 폼이 전송되어야 함 -->
 					<a href="#" onclick="addToCart()" class="btn btn-success">상품 주문</a>
