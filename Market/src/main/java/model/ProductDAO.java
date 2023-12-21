@@ -108,4 +108,74 @@ public class ProductDAO {
 		}
 		return p;
 	}
+	
+	// 상품 삭제
+	public void deleteProduct(String pid) {
+		try {
+			// db연결
+			conn = JDBCUtil.getConnection();
+			// sql처리
+			String sql = "delete from product where p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pid);
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { // db종료
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+
+	// 상품 수정(이미지 파일이 있는 경우)
+	public void updateProduct(Product p) {
+		try {
+			// db연결
+			conn = JDBCUtil.getConnection();
+			// sql처리
+			String sql = "update product set p_name=?, p_price=?, p_description=?, "
+						+ "p_category=?, p_stock=?, p_condition=?, p_image=? "
+						+ "where p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getPname());
+			pstmt.setInt(2, p.getPrice());
+			pstmt.setString(3, p.getDescription());
+			pstmt.setString(4, p.getCategory());
+			pstmt.setLong(5, p.getPstock());
+			pstmt.setString(6, p.getCondition());
+			pstmt.setString(7, p.getPimage());
+			pstmt.setString(8, p.getPid());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { // db종료
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	// 상품 수정(이미지 파일이 없는 경우)
+	public void updateProductNoImage(Product p) {
+		try {
+			// db연결
+			conn = JDBCUtil.getConnection();
+			// sql처리
+			String sql = "update product set p_name=?, p_price=?, p_description=?, "
+						+ "p_category=?, p_stock=?, p_condition=? "
+						+ "where p_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getPname());
+			pstmt.setInt(2, p.getPrice());
+			pstmt.setString(3, p.getDescription());
+			pstmt.setString(4, p.getCategory());
+			pstmt.setLong(5, p.getPstock());
+			pstmt.setString(6, p.getCondition());
+			pstmt.setString(7, p.getPid());
+			// sql 실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { // db종료
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 }

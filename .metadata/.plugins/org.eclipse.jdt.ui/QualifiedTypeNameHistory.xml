@@ -11,7 +11,6 @@
     <fullyQualifiedTypeName name="student.StudentDAO"/>
     <fullyQualifiedTypeName name="student.Student"/>
     <fullyQualifiedTypeName name="member.Member"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="board.BoardDAO"/>
     <fullyQualifiedTypeName name="board.Board"/>
     <fullyQualifiedTypeName name="reply.ReplyDAO"/>
@@ -37,9 +36,10 @@
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="common.JDBCUtil"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="model.ProductDAO"/>
     <fullyQualifiedTypeName name="model.Product"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +24,7 @@
 						</c:if>	
 						<h3>${product.pname}</h3>
 						<p>${product.category}</p>
-						<p><fmt:formatNumber value="${product.price}" pattern="#,##0"/>원</p>
+						<p>${product.price}원</p>
 						<a href="/productinfo.do?pid=${product.pid}"
 							class="btn btn-secondary">상세정보 &raquo;</a>
 					</div>
