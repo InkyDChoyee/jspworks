@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -42,6 +44,9 @@ public class MainController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String command = uri.substring(uri.lastIndexOf("/"));
 		String nextPage = "";
+		
+		HttpSession session = request.getSession();
+		
 		
 		if(command.equals("/main.do")) {
 			nextPage = "/main.jsp";
@@ -109,6 +114,69 @@ public class MainController extends HttpServlet {
 			// 모델 생성
 			request.setAttribute("product", product);
 			nextPage = "/product/pinfo.jsp";
+		}else if(command.equals("/addcart.do")) {  // 상품 추가
+			String pid = request.getParameter("pid");
+			// 상품 목록
+			List<Product> goodsList = pdao.getProductList();
+			Product goods = new Product();
+			// 목록에서 추가한 상품 찾기
+			for(int i = 0; i < goodsList.size(); i++) {
+				goods = goodsList.get(i);
+				if(goods.getPid().equals(pid)) {   // 추가한 상품코드와 일치하면 빠져나옴
+					break;
+				}
+			}
+			// 상품 세션 발급
+			List<Product> list = (ArrayList<Product>)session.getAttribute("cartlist");
+			if(list == null) {
+				list = new ArrayList<>();
+				session.setAttribute("cartlist", list);
+			}
+			
+			// 장바구니에 수량 추가
+			int cnt = 0;    // 장바구니에 추가한 횟수 변수
+			Product goodsQnt = new Product();
+			
+			for(int i = 0; i < list.size(); i++) {
+				goodsQnt = list.get(i);
+				if(goodsQnt.getPid().equals(pid)) {
+					cnt++;
+					// 추가 주문된 상품 객체 변수
+//					int orderQuantity = goodsQnt.getQuantity() + 1;
+//					goodsQnt.setQuantity(orderQuantity);
+					goodsQnt.setQuantity(goodsQnt.getQuantity() + 1);
+				}
+			}
+			// 장바구니에 추가한 적이 없으면 수량을 1로 정함
+			if(cnt == 0) {
+				goods.setQuantity(1);
+				list.add(goods);
+			}
+			
+			
+			nextPage = "/productinfo.do?pid=" + pid;
+		}else if(command.equals("/cart.do")) {  // 장바구니
+			// 상품 세션 유지
+			List<Product> cartlist = (ArrayList<Product>)session.getAttribute("cartlist");
+			if(cartlist == null) {
+				cartlist = new ArrayList<>();
+			}
+			
+			// 합계
+			int sum = 0;      // 총합계
+			int unit_sum = 0; // 품목별 합계 = 가격X수량
+			
+			for(int i=0; i<cartlist.size(); i++) {
+				Product product = cartlist.get(i);  // 장바구니에 담긴 품목
+				unit_sum = product.getPrice() * product.getQuantity();
+				sum += unit_sum;
+			}
+			request.setAttribute("cartlist", cartlist);
+			request.setAttribute("unit_sum", unit_sum);
+			request.setAttribute("sum", sum);
+			
+			
+			nextPage = "/product/cart.jsp";
 		}
 		
 		if(command.equals("/insertproduct.do")) {

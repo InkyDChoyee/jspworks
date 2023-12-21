@@ -25,6 +25,7 @@
 				<form action="/addcart.do?pid=${product.pid}" name="addform" method="post">
 					<!-- 상품 주문 버튼을 클릭하면 폼이 전송되어야 함 -->
 					<a href="#" onclick="addToCart()" class="btn btn-success">상품 주문</a>
+					<a href="/cart.do" class="btn btn-warning">장바구니</a>
 					<a href="/productlist.do" class="btn btn-secondary">상품 목록 &raquo;</a>
 				</form>
 			</div>
