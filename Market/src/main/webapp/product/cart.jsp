@@ -34,6 +34,7 @@
 								<td><fmt:formatNumber value="${product.price}" pattern="#,##0"/></td>
 								<td>${product.quantity}</td>
 								<td><fmt:formatNumber value="${product.price*product.quantity}" pattern="#,##0"/></td>
+								<td><a href="/removecart.do?pid=${product.pid}" class="badge bg-dark">삭제</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>	

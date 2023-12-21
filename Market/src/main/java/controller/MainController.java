@@ -239,15 +239,26 @@ public class MainController extends HttpServlet {
 			request.setAttribute("sum", sum);
 
 			nextPage = "/product/cart.jsp";
-		} else if (command.equals("/deletecart.do")) { // 장바구니
+		} else if (command.equals("/deletecart.do")) { // 장바구니 전체 삭제
 			// 장바구니 품목 전체 삭제(세션 삭제)
 			session.invalidate();
 
+		} else if (command.equals("/removecart.do")) { // 개별 품목 삭제
+			String pid = request.getParameter("pid");
+			// 상품 세션 유지
+			List<Product> cartlist = (ArrayList<Product>) session.getAttribute("cartlist");
+			// 장바구니에서 해당 품목을 찾아서 삭제
+			for(int i=0; i<cartlist.size(); i++) {
+				Product product = cartlist.get(i);
+				if(product.getPid().equals(pid)) {
+					cartlist.remove(product);  // ArrayList의 삭제메서드 내장함수 = .remove();
+				}
+			}
 		}
 
 		if (command.equals("/insertproduct.do")) {
 			response.sendRedirect("/productlist.do");
-		} else if (command.equals("/deletecart.do")) {
+		} else if (command.equals("/deletecart.do") || command.equals("/removecart.do")) {
 			response.sendRedirect("/cart.do");
 		} else if (command.equals("/addcart.do")) {
 			String pid = request.getParameter("pid");
