@@ -234,6 +234,11 @@ public class MainController extends HttpServlet {
 				unit_sum = product.getPrice() * product.getQuantity();
 				sum += unit_sum;
 			}
+			
+			// 세션 아이디 얻기
+			String cartId = session.getId();
+			
+			request.setAttribute("cartId", cartId);
 			request.setAttribute("cartlist", cartlist);
 			request.setAttribute("unit_sum", unit_sum);
 			request.setAttribute("sum", sum);
@@ -254,6 +259,9 @@ public class MainController extends HttpServlet {
 					cartlist.remove(product);  // ArrayList의 삭제메서드 내장함수 = .remove();
 				}
 			}
+		} else if(command.equals("/shippingform.do")) {
+			
+			nextPage="/product/shippingform.jsp";
 		}
 
 		if (command.equals("/insertproduct.do")) {

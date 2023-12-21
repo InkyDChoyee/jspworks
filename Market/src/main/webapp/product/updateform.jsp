@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,10 +53,16 @@
 				<div class="form-group row my-3">
 					<label class="col-2">상태</label>
 					<div class="col-3">
-					<p>
-						<label><input type="radio" name="condition" value="New" checked>신상품</label>
-						<label><input type="radio" name="condition" value="Old">중고품</label>
-					</p>
+						<p>
+							<c:if test="${product.condition eq 'New'}">
+								<label><input type="radio" name="condition" value="New" checked>신상품</label>
+								<label><input type="radio" name="condition" value="Old">중고품</label>
+							</c:if>
+							<c:if test="${product.condition eq 'Old'}">
+								<label><input type="radio" name="condition" value="New">신상품</label>
+								<label><input type="radio" name="condition" value="Old" checked>중고품</label>
+							</c:if>
+						</p>
 					</div>
 				</div>
 				<div class="form-group row my-3">

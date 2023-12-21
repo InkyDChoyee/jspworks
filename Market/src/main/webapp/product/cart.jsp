@@ -16,7 +16,8 @@
 			<table>
 				<tr>
 					<td align="left"><a href="/deletecart.do" class="btn btn-danger">삭제하기</a></td>
-					<td align="right"><a href="" class="btn btn-success">주문하기</a></td>
+						<!-- 장바구니 주문이므로 카트아이디를 전달해줌 -->
+					<td align="right"><a href="/shippingform.do?cartId=${cartId}" class="btn btn-success">주문하기</a></td>
 				</tr>
 			</table>
 			<!-- 장바구니 품목 -->
